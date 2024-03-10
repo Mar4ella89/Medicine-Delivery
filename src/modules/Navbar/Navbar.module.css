@@ -1,7 +1,15 @@
+.wrapper {
+    min-width: 380px;
+    /* max-width: 1600px; */
+    background-color: #43b02a;
+}
+
 .navList {
     display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
     gap: 20px;
-    padding: 15px 15px;
+    padding: 15px 20px;
     font-size: 20px;
     font-weight: 500;
     background-color: #43b02a;
@@ -18,9 +26,6 @@
     color: #dad5d5;
 }
 
-/* .navLink:global(.active) {
-    color: #114905
-} */
 .navLink:global(.active) {
     color: #dad5d5;
 }

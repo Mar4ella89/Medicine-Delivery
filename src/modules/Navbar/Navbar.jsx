@@ -4,6 +4,7 @@ import css from './Navbar.module.css';
 
 const Navbar = () => {
   return (
+    <div className={css.wrapper}>   
     <ul className={css.navList}>
       <li>
         <NavLink className={css.navLink} to="/">
@@ -16,6 +17,7 @@ const Navbar = () => {
         </NavLink>
       </li>
     </ul>
+    </div>
   );
 };
 
