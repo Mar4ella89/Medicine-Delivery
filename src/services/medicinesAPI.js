@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 
 const instance = axios.create({
   baseURL: 'https://medicine-delivery-ztb4.onrender.com/api/medicines',
-  //   params: {
-  //     api_key: 'b331236c37988e13f653df9937f18de4',
-  //     language: 'en-US',
-  //     include_adult: false,
-  //   },
+  params: {
+    limit: 12,
+  },
 });
 
 export const allMedicines = async () => {

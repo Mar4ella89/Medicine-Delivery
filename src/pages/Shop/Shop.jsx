@@ -23,7 +23,7 @@ const Shop = () => {
   console.log(medicineItems);
 
   const elements = medicineItems.map(({ id, name, imgUrl, price }) => (
-    <li className={css.itemCart}>
+    <li key={id} className={css.itemCart}>
       <img src={imgUrl} alt={name} width={290} className={css.img} />
       <h3 className={css.subtitle}>{name}</h3>
       <div className={css.medicineOrder}>
@@ -47,31 +47,7 @@ const Shop = () => {
           </ul>
         </section>
         <section className={css.sectionMedicine}>
-          <ul className={css.listCart}>
-            {elements}
-            {/* <li className={css.itemCart}>
-              <img
-                src={medicineItems.imgUrl}
-                alt=""
-                width={290}
-                className={css.img}
-              />
-              <h3 className={css.subtitle}>medicineItems.name</h3>
-              <div className={css.medicineOrder}>
-                <p>medicineItems.price</p>
-                <button className={css.btnOrder}>add to Cart</button>
-              </div>
-            </li>
-            <li className={css.itemCart}>Medicine 2</li>
-            <li className={css.itemCart}>Medicine 3</li>
-            <li className={css.itemCart}>Medicine 4</li>
-            <li className={css.itemCart}>Medicine 5</li>
-            <li className={css.itemCart}>Medicine 6</li>
-            <li className={css.itemCart}>Medicine 7</li>
-            <li className={css.itemCart}>Medicine 8</li>
-            <li className={css.itemCart}>Medicine 9</li>
-            <li className={css.itemCart}>Medicine 10</li> */}
-          </ul>
+          <ul className={css.listCart}>{elements}</ul>
         </section>
       </div>
     </Container>
