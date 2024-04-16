@@ -40,14 +40,14 @@
   width: 990px;
 }
 
-.listCart {
+.listMedicine {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   margin-top: 10px;
 }
 
-.itemCart {
+.itemMedicine {
   padding: 15px 15px;
  width: 320px;
  height: 420px;

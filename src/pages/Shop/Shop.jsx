@@ -20,10 +20,8 @@ const Shop = () => {
     fetchAllMedicines();
   }, []);
 
-  console.log(medicineItems);
-
-  const elements = medicineItems.map(({ id, name, imgUrl, price }) => (
-    <li key={id} className={css.itemCart}>
+  const elements = medicineItems.map(({ _id, name, imgUrl, price }) => (
+    <li key={_id} className={css.itemMedicine}>
       <img src={imgUrl} alt={name} width={290} className={css.img} />
       <h3 className={css.subtitle}>{name}</h3>
       <div className={css.medicineOrder}>
@@ -47,7 +45,7 @@ const Shop = () => {
           </ul>
         </section>
         <section className={css.sectionMedicine}>
-          <ul className={css.listCart}>{elements}</ul>
+          <ul className={css.listMedicine}>{elements}</ul>
         </section>
       </div>
     </Container>
