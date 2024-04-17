@@ -1,5 +1,3 @@
-// import { useEffect, useState } from 'react';
-
 import Container from 'components/Container/Container';
 import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
