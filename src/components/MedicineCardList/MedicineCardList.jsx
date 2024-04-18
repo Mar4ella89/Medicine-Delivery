@@ -6,6 +6,7 @@ import css from './MedicineCardList.module.css';
 
 const MedicineCardList = () => {
   const [medicineItems, setMedicineItems] = useState([]);
+  const [selectedDrug, setSelectedDrugs] = useState(null);
 
   useEffect(() => {
     const fetchAllMedicines = async () => {
@@ -18,6 +19,16 @@ const MedicineCardList = () => {
     };
     fetchAllMedicines();
   }, []);
+
+  const handleDrugChange = drugId => {
+    setSelectedDrud(drugId);
+  };
+
+  const filteredMedicines = medicines.filter(medicine => {
+    // Здесь нужно реализовать логику фильтрации по аптеке
+    // (например, по ID или названию)
+    return true; // Временный заполнитель
+  });
 
   const elements = medicineItems.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
