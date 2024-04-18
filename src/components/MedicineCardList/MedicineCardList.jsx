@@ -20,15 +20,13 @@ const MedicineCardList = () => {
     fetchAllMedicines();
   }, []);
 
-  const handleDrugChange = drugId => {
-    setSelectedDrud(drugId);
-  };
+  // const handleDrugChange = drugId => {
+  //   setSelectedDrud(drugId);
+  // };
 
-  const filteredMedicines = medicines.filter(medicine => {
-    // Здесь нужно реализовать логику фильтрации по аптеке
-    // (например, по ID или названию)
-    return true; // Временный заполнитель
-  });
+  // const filteredMedicines = medicines.filter(medicine => {
+  //   return medicine.availablePharmacies.includes(selectedPharmacy);
+  // });
 
   const elements = medicineItems.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
