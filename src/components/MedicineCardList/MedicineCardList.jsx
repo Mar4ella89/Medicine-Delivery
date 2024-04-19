@@ -20,8 +20,10 @@ const MedicineCardList = ({ medicineItems, selectedPharmacy }) => {
   // }, []);
 
   const filteredMedicines = medicineItems.filter(medicine => {
-    return medicine.pharmacyId === selectedPharmacy;
+    return medicine.availablePharmacies === selectedPharmacy;
   });
+
+  console.log(medicineItems[0]);
 
   const elements = filteredMedicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
