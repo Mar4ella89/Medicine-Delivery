@@ -4,27 +4,32 @@ import { allDrugs } from 'services/drugsAPI';
 
 import css from './DrugsList.module.css';
 
-const DrugList = () => {
-  const [drugsItem, setDrugsItem] = useState([]);
+const DrugList = ({ drugsItem, onSelectPharmacy }) => {
+  // const [drugsItem, setDrugsItem] = useState([]);
 
-  useEffect(() => {
-    const fetchAllDrugs = async () => {
-      try {
-        const data = await allDrugs();
-        setDrugsItem(data);
-      } catch ({ response }) {
-        console.log(response.data.message);
-      }
-    };
-    fetchAllDrugs();
-  }, []);
+  // useEffect(() => {
+  //   const fetchAllDrugs = async () => {
+  //     try {
+  //       const data = await allDrugs();
+  //       setDrugsItem(data);
+  //     } catch ({ response }) {
+  //       console.log(response.data.message);
+  //     }
+  //   };
+  //   fetchAllDrugs();
+  // }, []);
 
   console.log(drugsItem);
+
+  const handlePharmacyClick = pharmacyId => {
+    onSelectPharmacy(pharmacyId); // Обновите выбранную аптеку при клике
+  };
 
   const elements = drugsItem.map(({ _id, name, latitude, longitude }) => {
     return (
       <li key={_id} className={css.item}>
         {name}
+        <button onClick={() => handlePharmacyClick(_id)}>{name}</button>
       </li>
     );
   });
