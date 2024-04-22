@@ -12,7 +12,7 @@ import css from './Shop.module.css';
 const Shop = () => {
   const [drugsItem, setDrugsItem] = useState([]);
   const [selectedPharmacy, setSelectedPharmacy] = useState(null); // Новая переменная состояния
-  const [medicineItems, setMedicineItems] = useState([]);
+  // const [medicineItems, setMedicineItems] = useState([]);
 
   useEffect(() => {
     const fetchAllDrugs = async () => {
@@ -26,17 +26,17 @@ const Shop = () => {
     fetchAllDrugs();
   }, []);
 
-  useEffect(() => {
-    const fetchAllMedicines = async () => {
-      try {
-        const data = await allMedicines();
-        setMedicineItems(data);
-      } catch ({ response }) {
-        console.log(response.data.message);
-      }
-    };
-    fetchAllMedicines();
-  }, []);
+  // useEffect(() => {
+  //   const fetchAllMedicines = async () => {
+  //     try {
+  //       const data = await allMedicines();
+  //       setMedicineItems(data);
+  //     } catch ({ response }) {
+  //       console.log(response.data.message);
+  //     }
+  //   };
+  //   fetchAllMedicines();
+  // }, []);
 
   return (
     <Container>
@@ -55,7 +55,7 @@ const Shop = () => {
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
         <MedicineCardList
-          medicineItems={medicineItems}
+          // medicineItems={medicineItems}
           selectedPharmacy={selectedPharmacy}
         />
       </div>

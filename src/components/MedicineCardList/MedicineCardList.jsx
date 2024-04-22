@@ -4,20 +4,22 @@ import { allMedicines } from 'services/medicinesAPI';
 
 import css from './MedicineCardList.module.css';
 
-const MedicineCardList = ({ medicineItems, selectedPharmacy }) => {
-  // const [medicineItems, setMedicineItems] = useState([]);
+const MedicineCardList = ({ selectedPharmacy }) => {
+  const [medicineItems, setMedicineItems] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchAllMedicines = async () => {
-  //     try {
-  //       const data = await allMedicines();
-  //       setMedicineItems(data);
-  //     } catch ({ response }) {
-  //       console.log(response.data.message);
-  //     }
-  //   };
-  //   fetchAllMedicines();
-  // }, []);
+  useEffect(() => {
+    const fetchAllMedicines = async () => {
+      try {
+        const data = await allMedicines();
+        setMedicineItems(data);
+      } catch ({ response }) {
+        console.log(response.data.message);
+      }
+    };
+    fetchAllMedicines();
+  }, []);
+
+  console.log(medicineItems);
 
   const filteredMedicines = medicineItems.filter(medicine => {
     const PharmacyIdArr = medicine.availablePharmacies;
@@ -25,7 +27,6 @@ const MedicineCardList = ({ medicineItems, selectedPharmacy }) => {
   });
 
   console.log(filteredMedicines);
-  // console.log(medicineItems[0].availablePharmacies);
 
   const elements = filteredMedicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
