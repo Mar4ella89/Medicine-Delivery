@@ -27,9 +27,12 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
 
   const elements = drugsItem.map(({ _id, name, latitude, longitude }) => {
     return (
-      <li key={_id} className={css.item}>
+      <li
+        key={_id}
+        className={css.item}
+        onClick={() => handlePharmacyClick(_id)}
+      >
         {name}
-        <button onClick={() => handlePharmacyClick(_id)}>{name}</button>
       </li>
     );
   });
