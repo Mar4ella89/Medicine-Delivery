@@ -10,7 +10,7 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/medicine-delivery">
+    <BrowserRouter basename="medicine-delivery">
       <App />
     </BrowserRouter>
   </React.StrictMode>
