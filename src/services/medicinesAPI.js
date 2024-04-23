@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import PropTypes from 'prop-types';
 
 const instance = axios.create({
   baseURL: 'https://medicine-delivery-ztb4.onrender.com/api/medicines',
@@ -48,22 +47,4 @@ export const allMedicines = async () => {
 //     },
 //   });
 //   return data;
-// };
-
-// getMovieById.propTypes = {
-//   id: PropTypes.string.isRequired,
-// };
-
-// searchMovie.propTypes = {
-//   searchQuery: PropTypes.string.isRequired,
-//   page: PropTypes.string.isRequired,
-// };
-
-// getMovieCast.propTypes = {
-//   id: PropTypes.string.isRequired,
-// };
-
-// getMovieReview.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   page: PropTypes.string.isRequired,
 // };

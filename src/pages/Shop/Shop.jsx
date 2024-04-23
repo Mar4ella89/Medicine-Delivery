@@ -11,8 +11,8 @@ import css from './Shop.module.css';
 
 const Shop = () => {
   const [drugsItem, setDrugsItem] = useState([]);
-  const [selectedPharmacy, setSelectedPharmacy] = useState(null); // Новая переменная состояния
-  // const [medicineItems, setMedicineItems] = useState([]);
+  const [selectedPharmacy, setSelectedPharmacy] = useState(null);
+  const [medicineItems, setMedicineItems] = useState([]);
 
   useEffect(() => {
     const fetchAllDrugs = async () => {
@@ -26,37 +26,32 @@ const Shop = () => {
     fetchAllDrugs();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchAllMedicines = async () => {
-  //     try {
-  //       const data = await allMedicines();
-  //       setMedicineItems(data);
-  //     } catch ({ response }) {
-  //       console.log(response.data.message);
-  //     }
-  //   };
-  //   fetchAllMedicines();
-  // }, []);
+  useEffect(() => {
+    const fetchAllMedicines = async () => {
+      try {
+        const data = await allMedicines();
+        setMedicineItems(data);
+      } catch ({ response }) {
+        console.log(response.data.message);
+      }
+    };
+    fetchAllMedicines();
+  }, []);
+
+  const filteredMedicines = medicineItems.filter(medicine => {
+    const PharmacyIdArr = medicine.availablePharmacies;
+    return PharmacyIdArr.includes(selectedPharmacy);
+  });
 
   return (
     <Container>
       <div className={css.wrapper}>
-        {/* <DrugList />
-        <MedicineCardList /> */}
-        {/* <DrugList
-          onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
-        />
-        <MedicineCardList
-          medicineItems={medicineItems}
-          selectedPharmacy={selectedPharmacy}
-        /> */}
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
         <MedicineCardList
-          // medicineItems={medicineItems}
-          selectedPharmacy={selectedPharmacy}
+          medicines={selectedPharmacy ? filteredMedicines : medicineItems}
         />
       </div>
     </Container>
