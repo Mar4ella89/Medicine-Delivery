@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Container from 'components/Container/Container';
 import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
+import DrugOnMap from 'components/DrugOnMap/DrugOnMap';
 
 import { allDrugs } from 'services/drugsAPI';
 import { allMedicines } from 'services/medicinesAPI';
@@ -46,6 +47,7 @@ const Shop = () => {
   return (
     <Container>
       <div className={css.wrapper}>
+        <DrugOnMap />
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
