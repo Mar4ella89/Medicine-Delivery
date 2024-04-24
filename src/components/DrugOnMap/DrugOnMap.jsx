@@ -1,43 +1,27 @@
-// import { useState, useCallback } from 'react';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 // import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px',
-// };
+const DrugOnMap = ({ pharmacyData }) => {
+  console.log(pharmacyData);
+  console.log(pharmacyData.coordinates);
+  // const { latitude, longitude } = pharmacyData.coordinates;
+  const { coordinates } = pharmacyData;
+  console.log(coordinates);
 
-// const center = {
-//   lat: -3.745,
-//   lng: -38.523,
-// };
-
-function DrugOnMap() {
-  //   const { isLoaded } = useJsApiLoader({
-  //     id: 'google-map-script',
-  //     googleMapsApiKey: 'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM',
-  //   });
-  //   const [map, setMap] = useState(null);
-  //   const onLoad = useCallback(function callback(map) {
-  //     const bounds = new window.google.maps.LatLngBounds(center);
-  //     map.fitBounds(bounds);
-  //     setMap(map);
-  //   }, []);
-  //   const onUnmount = useCallback(function callback(map) {
-  //     setMap(null);
-  //   }, []);
-  //   return isLoaded ? (
-  //     <GoogleMap
-  //       mapContainerStyle={containerStyle}
-  //       center={center}
-  //       zoom={10}
-  //       onLoad={onLoad}
-  //       onUnmount={onUnmount}
-  //     >
-  //       <></>
-  //     </GoogleMap>
-  //   ) : (
-  //     <></>
-  //   );
-}
+  return (
+    <LoadScript
+      googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}
+      libraries={['places']}
+    >
+      <GoogleMap
+        mapContainerStyle={{ width: '400px', height: '300px' }}
+        center={{ lat: 1, lng: 1 }}
+        zoom={15}
+      >
+        <Marker position={{ lat: 2, lng: 2 }} />
+      </GoogleMap>
+    </LoadScript>
+  );
+};
 
 export default DrugOnMap;

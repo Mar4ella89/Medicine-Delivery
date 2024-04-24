@@ -40,14 +40,22 @@ const Shop = () => {
   }, []);
 
   const filteredMedicines = medicineItems.filter(medicine => {
-    const PharmacyIdArr = medicine.availablePharmacies;
-    return PharmacyIdArr.includes(selectedPharmacy);
+    const pharmacyIdArr = medicine.availablePharmacies;
+    return pharmacyIdArr.includes(selectedPharmacy);
   });
+
+  // const filteredDrug = drugsItem.filter(drug => {
+  //   const drugCoord = drug.coordinates;
+  //   return drugCoord.includes(selectedPharmacy);
+  // });
 
   return (
     <Container>
       <div className={css.wrapper}>
-        <DrugOnMap />
+        <DrugOnMap
+          pharmacyData={drugsItem}
+          // drugCoordinates={selectedPharmacy ? filteredMedicines : medicineItems}
+        />
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
