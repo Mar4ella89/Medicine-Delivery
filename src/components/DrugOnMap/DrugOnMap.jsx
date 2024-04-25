@@ -15,7 +15,7 @@ const DrugOnMap = ({ currentDrug }) => {
   return (
     <LoadScript googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}>
       <GoogleMap
-        mapContainerStyle={{ height: '400px' }}
+        mapContainerStyle={{ height: '400px', borderRadius: '10px' }}
         center={{ lat: latitude, lng: longitude }}
         zoom={15}
       >
