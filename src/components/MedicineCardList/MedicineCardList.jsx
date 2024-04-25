@@ -10,6 +10,8 @@ const MedicineCardList = ({ medicines }) => {
     setPickedMedicine(prevState => [...prevState, ...itemMedecine]);
   };
 
+  console.log(pickedMedicine);
+
   const elements = medicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
       <img src={imgUrl} alt={name} width={290} className={css.img} />
