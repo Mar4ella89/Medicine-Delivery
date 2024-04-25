@@ -18,7 +18,7 @@ const DrugOnMap = ({ currentDrug }) => {
       <GoogleMap
         mapContainerStyle={{ width: '400px', height: '300px' }}
         center={{ lat: latitude, lng: longitude }}
-        zoom={5}
+        zoom={15}
       >
         <Marker position={{ lat: latitude, lng: longitude }} />
       </GoogleMap>
