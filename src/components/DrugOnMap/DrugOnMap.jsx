@@ -14,14 +14,11 @@ const DrugOnMap = ({ currentDrug }) => {
   console.log(latitude);
 
   return (
-    <LoadScript
-      googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}
-      // libraries={['places']}
-    >
+    <LoadScript googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}>
       <GoogleMap
         mapContainerStyle={{ width: '400px', height: '300px' }}
         center={{ lat: latitude, lng: longitude }}
-        zoom={15}
+        zoom={5}
       >
         <Marker position={{ lat: latitude, lng: longitude }} />
       </GoogleMap>
