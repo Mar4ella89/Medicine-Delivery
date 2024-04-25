@@ -6,21 +6,17 @@ const DrugOnMap = ({ currentDrug }) => {
     latitude: 50.442226451645666,
     longitude: 30.53763616537363,
   };
-  // if (currentDrug) {
-  //   const { latitude, longitude } = currentDrug.coordinates;
-  //   console.log(currentDrug);
-  //   console.log(currentDrug.coordinates);
-  //   console.log(latitude);
-  // }
 
   const { latitude, longitude } = currentDrug
     ? currentDrug.coordinates
     : defaultCoorditates;
 
+  console.log(latitude);
+
   return (
     <LoadScript
       googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}
-      libraries={['places']}
+      // libraries={['places']}
     >
       <GoogleMap
         mapContainerStyle={{ width: '400px', height: '300px' }}
