@@ -50,8 +50,8 @@ const Shop = () => {
 
   return (
     <Container>
+      <DrugOnMap currentDrug={filteredDrug} />
       <div className={css.wrapper}>
-        <DrugOnMap currentDrug={filteredDrug} />
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}

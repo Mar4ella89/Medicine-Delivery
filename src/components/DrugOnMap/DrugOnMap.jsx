@@ -1,5 +1,4 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 const DrugOnMap = ({ currentDrug }) => {
   const defaultCoorditates = {
@@ -16,7 +15,7 @@ const DrugOnMap = ({ currentDrug }) => {
   return (
     <LoadScript googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}>
       <GoogleMap
-        mapContainerStyle={{ width: '400px', height: '300px' }}
+        mapContainerStyle={{ height: '400px' }}
         center={{ lat: latitude, lng: longitude }}
         zoom={15}
       >
