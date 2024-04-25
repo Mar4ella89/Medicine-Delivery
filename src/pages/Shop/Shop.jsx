@@ -44,18 +44,14 @@ const Shop = () => {
     return pharmacyIdArr.includes(selectedPharmacy);
   });
 
-  // const filteredDrug = drugsItem.filter(drug => {
-  //   const drugCoord = drug.coordinates;
-  //   return drugCoord.includes(selectedPharmacy);
-  // });
+  const filteredDrug = drugsItem.find(({ _id }) => {
+    return _id === selectedPharmacy;
+  });
 
   return (
     <Container>
       <div className={css.wrapper}>
-        <DrugOnMap
-          pharmacyData={drugsItem}
-          // drugCoordinates={selectedPharmacy ? filteredMedicines : medicineItems}
-        />
+        <DrugOnMap currentDrug={filteredDrug} />
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
