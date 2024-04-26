@@ -14,7 +14,9 @@ export const CartProvider = ({ children }) => {
     setCartItems(prevState => [...prevState, ...itemMedecine]);
   };
 
-  const removeFromCart = medicineId => {};
+  const removeFromCart = medicineId => {
+    setCartItems(cartItems.filter(({ _id }) => medicineId !== _id));
+  };
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>

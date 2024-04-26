@@ -5,15 +5,11 @@ import CartContext from 'contexts/CartContext';
 import css from './MedicineCardList.module.css';
 
 const MedicineCardList = ({ medicines }) => {
-  // const [pickedMedicine, setPickedMedicine] = useState([]);
-
   const { addToCart } = useContext(CartContext);
 
   const handleMedicineClick = (medicines, idMedicines) => {
     addToCart(medicines, idMedicines);
   };
-
-  // console.log(pickedMedicine);
 
   const elements = medicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
