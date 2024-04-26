@@ -1,0 +1,56 @@
+.sectionMedicine {
+    width: 990px;
+}
+
+.listMedicine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.itemMedicine {
+    padding: 15px 15px;
+    width: 320px;
+    height: 420px;
+    box-shadow: 0px 3.4px 3.4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #43b02a;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img {
+    display: block;
+    width: 290px;
+    height: 320px;
+}
+
+.subtitle {
+    margin-top: 10px;
+}
+
+.medicineOrder {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnOrder {
+    padding: 10px 10px;
+    box-shadow: 0px 3.4px 3.4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-transform: uppercase;
+    background-color: #effff0;
+    color: #43b02a;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btnOrder:hover,
+.btnOrder:focus {
+    background-color: #43b02a;
+    color: #ffffff;
+}
