@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import CartContext from 'contexts/CartContext';
 
 import css from './MedicineCardList.module.css';
 
 const MedicineCardList = ({ medicines }) => {
-  const [pickedMedicine, setPickedMedicine] = useState([]);
+  // const [pickedMedicine, setPickedMedicine] = useState([]);
 
-  const handleMedicineClick = idMedicines => {
-    const itemMedecine = medicines.filter(({ _id }) => _id === idMedicines);
-    setPickedMedicine(prevState => [...prevState, ...itemMedecine]);
+  const { addToCart } = useContext(CartContext);
+
+  const handleMedicineClick = (medicines, idMedicines) => {
+    addToCart(medicines, idMedicines);
   };
 
-  console.log(pickedMedicine);
+  // console.log(pickedMedicine);
 
   const elements = medicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
@@ -20,7 +23,7 @@ const MedicineCardList = ({ medicines }) => {
         <p>{price} $</p>
         <button
           className={css.btnOrder}
-          onClick={() => handleMedicineClick(_id)}
+          onClick={() => handleMedicineClick(medicines, _id)}
         >
           add to Cart
         </button>
