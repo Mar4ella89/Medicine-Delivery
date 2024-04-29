@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import Container from 'components/Container/Container';
 import CartContext from 'contexts/CartContext';
 
 import css from './ShoppingCart.module.css';
@@ -25,9 +26,11 @@ const ShoppingCart = () => {
   ));
 
   return (
-    <section className={css.sectionMedicine}>
-      <ul className={css.listMedicine}>{elements}</ul>
-    </section>
+    <Container>
+      <section className={css.sectionMedicine}>
+        <ul className={css.listMedicine}>{elements}</ul>
+      </section>
+    </Container>
   );
 };
 
