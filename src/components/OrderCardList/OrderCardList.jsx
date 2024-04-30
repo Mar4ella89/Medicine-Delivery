@@ -5,21 +5,40 @@ import CartContext from 'contexts/CartContext';
 import css from './OrderCardList.module.css';
 
 const OrderCardList = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
 
   const handleRemoveClick = medicineId => {
     removeFromCart(medicineId);
   };
 
-  const elements = cartItems.map(({ _id, name, imgUrl, price }) => (
+  const handleQuantityChange = (medicineId, event) => {
+    const newQuantity = parseInt(event.target.value);
+    if (newQuantity >= 0) {
+      updateQuantity(medicineId, newQuantity);
+    } else {
+      removeFromCart(medicineId);
+    }
+  };
+
+  const elements = cartItems.map(({ _id, name, imgUrl, price, quantity }) => (
     <li key={_id + '1'} className={css.itemMedicine}>
       <img src={imgUrl} alt={name} width={290} className={css.img} />
       <h3 className={css.subtitle}>{name}</h3>
       <div className={css.medicineOrder}>
         <p>{price} $</p>
-        <button className={css.btnOrder} onClick={() => handleRemoveClick(_id)}>
+        <button
+          type="button"
+          className={css.btnOrder}
+          onClick={() => handleRemoveClick(_id)}
+        >
           Remove
         </button>
+        <input
+          type="number"
+          value={quantity}
+          onChange={event => handleQuantityChange(_id, event)}
+        />
+        <span></span>
       </div>
     </li>
   ));

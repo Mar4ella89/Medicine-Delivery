@@ -4,27 +4,38 @@ const CartContext = createContext({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
-  //   quantity: 0,
+  updateQuantity: () => {},
 });
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (medicines, medicineId) => {
-    const itemMedecine = medicines.filter(({ _id }) => _id === medicineId);
-    setCartItems(prevState => [...prevState, ...itemMedecine]);
+    const itemMedicine = medicines.find(({ _id }) => _id === medicineId);
+    if (itemMedicine) {
+      setCartItems(prevState => [
+        ...prevState,
+        { ...itemMedicine, quantity: 1 },
+      ]);
+    }
   };
 
   const removeFromCart = medicineId => {
     setCartItems(cartItems.filter(({ _id }) => medicineId !== _id));
   };
 
-  //   const updateQuantity = medicineId => {
-  //     cartItems.filter(_id => medicineId === _id);
-  //   };
+  const updateQuantity = (medicineId, newQuantity) => {
+    setCartItems(
+      cartItems.map(item =>
+        item._id === medicineId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );
