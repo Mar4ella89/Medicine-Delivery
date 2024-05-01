@@ -30,13 +30,14 @@ const OrderCardList = () => {
     }
   };
 
-  const handleQuantityIncrease = medicineId => {
-    updateQuantity(medicineId, currentQuantity + 1);
+  const handleQuantityIncrease = (medicineId, quantity) => {
+    updateQuantity(medicineId, quantity + 1);
+    console.log(quantity);
   };
 
-  const handleQuantityDecrease = medicineId => {
-    if (currentQuantity > 1) {
-      updateQuantity(medicineId, currentQuantity - 1);
+  const handleQuantityDecrease = (medicineId, quantity) => {
+    if (quantity > 1) {
+      updateQuantity(medicineId, quantity - 1);
     } else {
       removeFromCart(medicineId);
     }
@@ -56,7 +57,9 @@ const OrderCardList = () => {
           Remove
         </button>
         <div className={css.quantityWrapper}>
-          <button onClick={handleQuantityIncrease}>+</button>
+          <button onClick={() => handleQuantityDecrease(_id, quantity)}>
+            -
+          </button>
           <input
             type="number"
             value={quantity}
@@ -64,7 +67,9 @@ const OrderCardList = () => {
             min="1"
             max="10"
           />
-          <button onClick={handleQuantityDecrease}>-</button>
+          <button onClick={() => handleQuantityIncrease(_id, quantity)}>
+            +
+          </button>
         </div>
       </div>
     </li>
