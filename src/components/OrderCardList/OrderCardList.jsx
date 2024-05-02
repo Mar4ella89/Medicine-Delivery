@@ -6,16 +6,8 @@ import css from './OrderCardList.module.css';
 
 const OrderCardList = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
-  const [currentQuantity, setCurrentQuantity] = useState(0);
 
-  // useEffect(() => {
-  //   const currentItem = cartItems.find(({ _id }) => _id === medicineId);
-  //   if (currentItem) {
-  //     setCurrentQuantity(currentItem.quantity);
-  //   } else {
-  //     setCurrentQuantity(0);
-  //   }
-  // }, [cartItems, medicineId]);
+  console.log(cartItems);
 
   const handleRemoveClick = medicineId => {
     removeFromCart(medicineId);
@@ -41,6 +33,7 @@ const OrderCardList = () => {
     } else {
       removeFromCart(medicineId);
     }
+    console.log(quantity);
   };
 
   const elements = cartItems.map(({ _id, name, imgUrl, price, quantity }) => (
