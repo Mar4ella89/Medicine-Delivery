@@ -37,7 +37,7 @@ const Shop = () => {
       }
     };
     fetchAllMedicines();
-  }, []);
+  }, [medicineItems]);
 
   const filteredMedicines = medicineItems.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
