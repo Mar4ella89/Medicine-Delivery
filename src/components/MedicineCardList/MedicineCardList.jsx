@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import CartContext from 'contexts/CartContext';
 
@@ -6,12 +6,9 @@ import css from './MedicineCardList.module.css';
 
 const MedicineCardList = ({ medicines }) => {
   const { addToCart } = useContext(CartContext);
-  // const [isActiveBtn, setIsActiveBtn] = useState(true);
 
   const handleMedicineClick = (medicines, idMedicines) => {
     addToCart(medicines, idMedicines);
-    // setIsActiveBtn(false);
-    // isChecked;
   };
 
   const elements = medicines.map(({ _id, name, imgUrl, price, isChecked }) => (
