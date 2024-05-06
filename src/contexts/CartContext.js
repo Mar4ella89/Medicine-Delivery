@@ -14,8 +14,6 @@ export const CartProvider = ({ children }) => {
     const itemMedicine = medicines.find(({ _id }) => _id === medicineId);
     const currentMedicine = cartItems.find(({ _id }) => _id === medicineId);
 
-    console.log(currentMedicine);
-
     if (itemMedicine && !currentMedicine) {
       setCartItems(prevState => [
         ...prevState,
