@@ -12,11 +12,19 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (medicines, medicineId) => {
     const itemMedicine = medicines.find(({ _id }) => _id === medicineId);
-    if (itemMedicine) {
+    const currentMedicine = cartItems.find(({ _id }) => _id === medicineId);
+
+    console.log(currentMedicine);
+
+    if (itemMedicine && !currentMedicine) {
       setCartItems(prevState => [
         ...prevState,
         { ...itemMedicine, quantity: 1, isChecked: true },
       ]);
+      return;
+    }
+    if (currentMedicine.quantity) {
+      return cartItems;
     }
   };
 
