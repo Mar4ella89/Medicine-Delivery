@@ -21,32 +21,12 @@ const MedicineCardList = ({ medicines }) => {
       <div className={css.medicineOrder}>
         <p>{price} $</p>
         <button
-          // disabled={true}
           type="button"
           className={css.btnOrder}
           onClick={() => handleMedicineClick(medicines, _id)}
         >
           add to Cart
         </button>
-        {/* {!isChecked ? (
-          <button
-            // disabled="disabled"
-            type="button"
-            className={css.btnOrder}
-            onClick={() => handleMedicineClick(medicines, _id)}
-          >
-            add to Cart
-          </button>
-        ) : (
-          <button
-            // disabled="disabled"
-            type="button"
-            className={css.btnOrderDisabled}
-            onClick={() => handleMedicineClick(medicines, _id)}
-          >
-            added to Cart
-          </button>
-        )} */}
       </div>
     </li>
   ));
