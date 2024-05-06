@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
       ]);
       return;
     }
-    if (currentMedicine.quantity) {
+    if (currentMedicine) {
       setCartItems(
         cartItems.map(item =>
           item._id === currentMedicine._id
