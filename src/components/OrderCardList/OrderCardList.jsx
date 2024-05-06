@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import CartContext from 'contexts/CartContext';
 
@@ -6,8 +6,6 @@ import css from './OrderCardList.module.css';
 
 const OrderCardList = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
-
-  console.log(cartItems);
 
   const handleRemoveClick = medicineId => {
     removeFromCart(medicineId);
@@ -17,23 +15,17 @@ const OrderCardList = () => {
     const newQuantity = parseInt(event.target.value);
     if (newQuantity >= 0) {
       updateQuantity(medicineId, newQuantity);
-    } else {
-      removeFromCart(medicineId);
     }
   };
 
   const handleQuantityIncrease = (medicineId, quantity) => {
     updateQuantity(medicineId, quantity + 1);
-    console.log(quantity);
   };
 
   const handleQuantityDecrease = (medicineId, quantity) => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       updateQuantity(medicineId, quantity - 1);
-    } else {
-      removeFromCart(medicineId);
     }
-    console.log(quantity);
   };
 
   const elements = cartItems.map(({ _id, name, imgUrl, price, quantity }) => (
@@ -59,6 +51,7 @@ const OrderCardList = () => {
             onChange={event => handleQuantityChange(_id, event)}
             min="1"
             max="10"
+            required
           />
           <button onClick={() => handleQuantityIncrease(_id, quantity)}>
             +
