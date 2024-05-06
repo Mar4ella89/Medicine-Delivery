@@ -49,7 +49,7 @@ const OrderCardList = () => {
             type="number"
             value={quantity}
             onChange={event => handleQuantityChange(_id, event)}
-            min="1"
+            min="0"
             max="10"
             required
           />
