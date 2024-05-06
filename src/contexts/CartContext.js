@@ -24,7 +24,13 @@ export const CartProvider = ({ children }) => {
       return;
     }
     if (currentMedicine.quantity) {
-      return cartItems;
+      setCartItems(
+        cartItems.map(item =>
+          item._id === currentMedicine._id
+            ? { ...item, quantity: currentMedicine.quantity + 1 }
+            : item
+        )
+      );
     }
   };
 
