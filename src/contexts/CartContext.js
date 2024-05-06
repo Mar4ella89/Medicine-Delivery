@@ -11,25 +11,22 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (medicines, medicineId) => {
-    const itemMedicine = medicines.find(({ _id }) => _id === medicineId);
-    const currentMedicine = cartItems.find(({ _id }) => _id === medicineId);
-
-    if (itemMedicine && !currentMedicine) {
-      setCartItems(prevState => [
-        ...prevState,
-        { ...itemMedicine, quantity: 1 },
-      ]);
-      return;
-    }
-    if (currentMedicine) {
+    const existingItem = cartItems.find(({ _id }) => _id === medicineId);
+    if (existingItem) {
       setCartItems(
         cartItems.map(item =>
-          item._id === currentMedicine._id
-            ? { ...item, quantity: currentMedicine.quantity + 1 }
+          item._id === existingItem._id
+            ? { ...item, quantity: existingItem.quantity + 1 }
             : item
         )
       );
+      return;
     }
+
+    setCartItems(prevState => [
+      ...prevState,
+      { ...medicines.find(({ _id }) => _id === medicineId), quantity: 1 },
+    ]);
   };
 
   const removeFromCart = medicineId => {
