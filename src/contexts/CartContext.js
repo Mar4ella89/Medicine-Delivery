@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
     if (itemMedicine && !currentMedicine) {
       setCartItems(prevState => [
         ...prevState,
-        { ...itemMedicine, quantity: 1, isChecked: true },
+        { ...itemMedicine, quantity: 1 },
       ]);
       return;
     }
