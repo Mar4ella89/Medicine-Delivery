@@ -34,7 +34,7 @@ const OrderCardList = () => {
         <img src={imgUrl} alt={name} width={290} className={css.img} />
         <h3 className={css.subtitle}>{name}</h3>
         <div className={css.medicineOrder}>
-          <p>{totalPrice ? totalPrice : price} $</p>
+          <p>{totalPrice ? totalPrice.toFixed(2) : price.toFixed(2)} $</p>
           <button
             type="button"
             className={css.btnOrder}
