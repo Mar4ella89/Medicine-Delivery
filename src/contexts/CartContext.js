@@ -12,14 +12,25 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (medicines, medicineId) => {
     const existingItem = cartItems.find(({ _id }) => _id === medicineId);
+
     if (existingItem) {
+      console.log(existingItem.price);
+      //   console.log(existingItem.totalPrice);
       setCartItems(
         cartItems.map(item =>
           item._id === existingItem._id
-            ? { ...item, quantity: existingItem.quantity + 1 }
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                totalPrice: item.totalPrice
+                  ? item.totalPrice + item.price
+                  : item.price * 2,
+              }
             : item
         )
       );
+      console.log(existingItem.quantity);
+      console.log(existingItem.totalPrice);
       return;
     }
 
