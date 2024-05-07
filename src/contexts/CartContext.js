@@ -14,8 +14,6 @@ export const CartProvider = ({ children }) => {
     const existingItem = cartItems.find(({ _id }) => _id === medicineId);
 
     if (existingItem) {
-      console.log(existingItem.price);
-      //   console.log(existingItem.totalPrice);
       setCartItems(
         cartItems.map(item =>
           item._id === existingItem._id
@@ -29,8 +27,6 @@ export const CartProvider = ({ children }) => {
             : item
         )
       );
-      console.log(existingItem.quantity);
-      console.log(existingItem.totalPrice);
       return;
     }
 
