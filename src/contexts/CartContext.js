@@ -47,9 +47,10 @@ export const CartProvider = ({ children }) => {
           ? {
               ...item,
               quantity: newQuantity,
-              totalPrice: item.totalPrice
-                ? item.totalPrice + item.price
-                : item.price * 2,
+              totalPrice:
+                item.quantity < newQuantity
+                  ? item.totalPrice + item.price
+                  : item.totalPrice - item.price,
             }
           : item
       )
