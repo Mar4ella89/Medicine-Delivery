@@ -42,18 +42,19 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = (medicineId, newQuantity) => {
     setCartItems(
-      cartItems.map(item =>
-        item._id === medicineId
+      cartItems.map(item => {
+        console.log(item);
+        return item._id === medicineId
           ? {
               ...item,
               quantity: newQuantity,
               totalPrice:
                 item.quantity < newQuantity
-                  ? item.totalPrice + item.price
+                  ? item.price * newQuantity
                   : item.totalPrice - item.price,
             }
-          : item
-      )
+          : item;
+      })
     );
   };
 
