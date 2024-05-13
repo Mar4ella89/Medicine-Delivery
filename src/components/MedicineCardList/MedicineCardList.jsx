@@ -11,12 +11,12 @@ const MedicineCardList = ({ medicines }) => {
     addToCart(medicines, idMedicines);
   };
 
-  const elements = medicines.map(({ _id, name, imgUrl, price, isChecked }) => (
+  const elements = medicines.map(({ _id, name, imgUrl, price }) => (
     <li key={_id} className={css.itemMedicine}>
       <img src={imgUrl} alt={name} width={290} className={css.img} />
       <h3 className={css.subtitle}>{name}</h3>
       <div className={css.medicineOrder}>
-        <p>{price} $</p>
+        <p>{price.toFixed(2)} $</p>
         <button
           type="button"
           className={css.btnOrder}

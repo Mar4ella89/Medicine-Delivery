@@ -29,12 +29,12 @@ const OrderCardList = () => {
   };
 
   const elements = cartItems.map(
-    ({ _id, name, imgUrl, price, quantity, totalPrice }) => (
+    ({ _id, name, imgUrl, quantity, totalPrice }) => (
       <li key={_id + '1'} className={css.itemMedicine}>
         <img src={imgUrl} alt={name} width={290} className={css.img} />
         <h3 className={css.subtitle}>{name}</h3>
         <div className={css.medicineOrder}>
-          <p>{totalPrice ? totalPrice.toFixed(2) : price.toFixed(2)} $</p>
+          <p>{totalPrice.toFixed(2)} $</p>
           <button
             type="button"
             className={css.btnOrder}

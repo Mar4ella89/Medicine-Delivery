@@ -20,9 +20,7 @@ export const CartProvider = ({ children }) => {
             ? {
                 ...item,
                 quantity: item.quantity + 1,
-                totalPrice: item.totalPrice
-                  ? item.totalPrice + item.price
-                  : item.price * 2,
+                totalPrice: item.totalPrice + item.price,
               }
             : item
         )
@@ -30,9 +28,10 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
+    const newMedicine = medicines.find(({ _id }) => _id === medicineId);
     setCartItems(prevState => [
       ...prevState,
-      { ...medicines.find(({ _id }) => _id === medicineId), quantity: 1 },
+      { ...newMedicine, quantity: 1, totalPrice: newMedicine.price },
     ]);
   };
 
@@ -48,10 +47,7 @@ export const CartProvider = ({ children }) => {
           ? {
               ...item,
               quantity: newQuantity,
-              totalPrice:
-                item.quantity < newQuantity
-                  ? item.price * newQuantity
-                  : item.totalPrice - item.price,
+              totalPrice: item.price * newQuantity,
             }
           : item;
       })
@@ -60,7 +56,12 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
