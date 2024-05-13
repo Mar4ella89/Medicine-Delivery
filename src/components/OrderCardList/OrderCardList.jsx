@@ -47,6 +47,7 @@ const OrderCardList = () => {
               -
             </button>
             <input
+              className={css.input}
               type="number"
               value={quantity}
               onChange={event => handleQuantityChange(_id, event)}
