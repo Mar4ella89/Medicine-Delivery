@@ -1,5 +1,26 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import * as yup from 'yup';
+
 import css from './OrderForm.module.css';
+
+const gender = ['female', 'male'];
+const age = ['18-25', '26-35', '36+'];
+
+const userSchema = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  // phone: yup.string().min(6).max(32).required(),
+  // gender: yup.string().oneOf(gender).required('Please enter your gender'),
+  // address: yup.string().oneOf(age).required('Please enter your age'),
+});
+
+const initialValues = {
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+};
 
 const OrderForm = () => {
   return (
