@@ -1,3 +1,9 @@
+.section {
+    width: 610px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
 .field {
     width: 100%;
     padding: 10px;

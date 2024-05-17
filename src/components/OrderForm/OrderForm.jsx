@@ -24,7 +24,7 @@ const initialValues = {
 
 const OrderForm = () => {
   return (
-    <section>
+    <section className={css.section}>
       <Formik
         initialValues={{ name: '', email: '', phone: '', address: '' }}
         onSubmit={async values => {
