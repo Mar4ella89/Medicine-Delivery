@@ -2,13 +2,15 @@ import Container from 'components/Container/Container';
 import OrderCardList from 'components/OrderCardList/OrderCardList';
 import OrderForm from 'components/OrderForm/OrderForm';
 
-// import css from './ShoppingCart.module.css';
+import css from './ShoppingCart.module.css';
 
 const ShoppingCart = () => {
   return (
     <Container>
-      <OrderForm />
-      <OrderCardList />
+      <div className={css.wrapper}>
+        <OrderForm />
+        <OrderCardList />
+      </div>
     </Container>
   );
 };

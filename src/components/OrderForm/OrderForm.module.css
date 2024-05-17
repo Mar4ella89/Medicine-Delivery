@@ -1,7 +1,9 @@
 .field {
-    
-    border: solid, 1px, #43b02a;
-    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #43b02a;
+    border-radius: 4px;
 }
 
 .button {

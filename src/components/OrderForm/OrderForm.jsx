@@ -33,10 +33,47 @@ const OrderForm = () => {
         }}
       >
         <Form>
-          <Field className={css.field} name="name" type="text" />
-          <Field className={css.field} name="email" type="email" />
-          <Field className={css.field} name="phone" type="text" />
-          <Field className={css.field} name="address" type="email" />
+          <label className={css.lable}>
+            <span className={css.fieldName}>Name</span>
+            <Field
+              className={css.field}
+              name="name"
+              type="text"
+              placeholder="Name"
+            />
+            <ErrorMessage name="name" component="div" />
+          </label>
+          <label className={css.lable}>
+            <span className={css.fieldName}>Email</span>
+            <Field
+              className={css.field}
+              name="email"
+              type="text"
+              placeholder="Email"
+            />
+            <ErrorMessage name="email" component="div" />
+          </label>
+          <label className={css.lable}>
+            <span className={css.fieldName}>Phone</span>
+            <Field
+              className={css.field}
+              name="phone"
+              type="text"
+              placeholder="Phone"
+            />
+            <ErrorMessage name="phone" component="div" />
+          </label>
+          <label className={css.lable}>
+            <span className={css.fieldName}>Address</span>
+            <Field
+              className={css.field}
+              name="address"
+              type="text"
+              placeholder="Address"
+            />
+            <ErrorMessage name="address" component="div" />
+          </label>
+
           <button className={css.button} type="submit">
             Submit
           </button>
