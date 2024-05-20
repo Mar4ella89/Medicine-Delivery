@@ -29,21 +29,14 @@ const OrderCardList = () => {
   };
 
   const elements = cartItems.map(
-    ({ _id, name, imgUrl, quantity, totalPrice }) => (
+    ({ _id, name, imgUrl, quantity, price, totalPrice }) => (
       <li key={_id + '1'} className={css.itemMedicine}>
         <div className={css.wrapper}>
           <img src={imgUrl} alt={name} width={145} className={css.img} />
           <div className={css.discription}>
             <h3 className={css.subtitle}>{name}</h3>
+            <p>{price} $</p>
             <div className={css.medicineOrder}>
-              <p>{totalPrice.toFixed(2)} $</p>
-              <button
-                type="button"
-                className={css.btnOrder}
-                onClick={() => handleRemoveClick(_id)}
-              >
-                Remove
-              </button>
               <div className={css.quantityWrapper}>
                 <button onClick={() => handleQuantityDecrease(_id, quantity)}>
                   -
@@ -61,6 +54,14 @@ const OrderCardList = () => {
                   +
                 </button>
               </div>
+              <button
+                type="button"
+                className={css.btnOrder}
+                onClick={() => handleRemoveClick(_id)}
+              >
+                Remove
+              </button>
+              <p>{totalPrice.toFixed(2)} $</p>
             </div>
           </div>
         </div>
