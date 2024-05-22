@@ -32,13 +32,15 @@ display: flex;
 }
 
 .discription {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
     margin-left: 20px;
     padding-top: 10px;
 }
 
 .subtitle {
-    margin-bottom: 10px;
-
+    margin-bottom: 40px;
 }
 
 .medicineOrder {
@@ -67,4 +69,12 @@ display: flex;
 
 .input {
     text-align: center;
+}
+
+.action {
+    display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+    margin-left: auto;
 }

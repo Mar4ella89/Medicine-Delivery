@@ -33,9 +33,12 @@ const OrderCardList = () => {
       <li key={_id + '1'} className={css.itemMedicine}>
         <div className={css.wrapper}>
           <img src={imgUrl} alt={name} width={145} className={css.img} />
+          {/* <div> */}
           <div className={css.discription}>
-            <h3 className={css.subtitle}>{name}</h3>
-            <p>{price} $</p>
+            <div>
+              <h3 className={css.subtitle}>{name}</h3>
+              <p>{price} $</p>
+            </div>
             <div className={css.medicineOrder}>
               <div className={css.quantityWrapper}>
                 <button onClick={() => handleQuantityDecrease(_id, quantity)}>
@@ -54,16 +57,19 @@ const OrderCardList = () => {
                   +
                 </button>
               </div>
-              <button
-                type="button"
-                className={css.btnOrder}
-                onClick={() => handleRemoveClick(_id)}
-              >
-                Remove
-              </button>
-              <p>{totalPrice.toFixed(2)} $</p>
             </div>
           </div>
+          <div className={css.action}>
+            <button
+              type="button"
+              className={css.btnOrder}
+              onClick={() => handleRemoveClick(_id)}
+            >
+              Remove
+            </button>
+            <p>{totalPrice.toFixed(2)} $</p>
+          </div>
+          {/* </div> */}
         </div>
       </li>
     )
