@@ -78,3 +78,15 @@ display: flex;
         align-items: flex-end;
     margin-left: auto;
 }
+
+.totalPrice {
+    margin-top: 20px;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #43b02a;
+}
+
+.sum {
+    color: #000000;
+}

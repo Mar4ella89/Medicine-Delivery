@@ -33,7 +33,7 @@ const OrderCardList = () => {
       <li key={_id + '1'} className={css.itemMedicine}>
         <div className={css.wrapper}>
           <img src={imgUrl} alt={name} width={145} className={css.img} />
-          {/* <div> */}
+
           <div className={css.discription}>
             <div>
               <h3 className={css.subtitle}>{name}</h3>
@@ -69,15 +69,21 @@ const OrderCardList = () => {
             </button>
             <p>{totalPrice.toFixed(2)} $</p>
           </div>
-          {/* </div> */}
         </div>
       </li>
     )
   );
 
+  const totalPrice = cartItems.reduce((sum, item) => {
+    return sum + item.totalPrice;
+  }, 0);
+
   return (
     <section className={css.sectionMedicine}>
       <ul className={css.listMedicine}>{elements}</ul>
+      <p className={css.totalPrice}>
+        Total price: <span className={css.sum}>{totalPrice} $</span>
+      </p>
     </section>
   );
 };
