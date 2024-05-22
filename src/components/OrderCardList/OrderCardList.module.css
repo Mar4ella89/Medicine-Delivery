@@ -31,8 +31,14 @@ display: flex;
     height: 160px;
 }
 
+.discription {
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
 .subtitle {
-    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
 .medicineOrder {
