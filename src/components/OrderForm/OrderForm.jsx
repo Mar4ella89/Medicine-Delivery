@@ -4,21 +4,31 @@ import * as yup from 'yup';
 
 import css from './OrderForm.module.css';
 
-const gender = ['female', 'male'];
-const age = ['18-25', '26-35', '36+'];
+const deliveryMethod = [
+  'Pick up from store',
+  'Delivery to address',
+  'New Post',
+];
+// const age = ['18-25', '26-35', '36+'];
 
 const userSchema = yup.object().shape({
   name: yup.string().required(),
+  lastName: yup.string().required(),
   email: yup.string().email().required(),
   // phone: yup.string().min(6).max(32).required(),
-  // gender: yup.string().oneOf(gender).required('Please enter your gender'),
+  deliveryMethod: yup
+    .string()
+    .oneOf(deliveryMethod)
+    .required('Please enter your delivery method'),
   // address: yup.string().oneOf(age).required('Please enter your age'),
 });
 
 const initialValues = {
   name: '',
+  lastName: '',
   email: '',
   phone: '',
+  deliveryMethod: null,
   address: '',
 };
 
@@ -26,44 +36,94 @@ const OrderForm = () => {
   return (
     <section className={css.section}>
       <Formik
-        initialValues={{ name: '', email: '', phone: '', address: '' }}
+        initialValues={initialValues}
         onSubmit={async values => {
           await new Promise(resolve => setTimeout(resolve, 500));
           alert(JSON.stringify(values, null, 2));
         }}
       >
         <Form>
-          <label className={css.lable}>
+          <label className={css.label}>
             <span className={css.fieldName}>Name</span>
             <Field
               className={css.field}
               name="name"
+              maxLength="20"
               type="text"
               placeholder="Name"
+              required
             />
             <ErrorMessage name="name" component="div" />
           </label>
-          <label className={css.lable}>
+          <label className={css.label}>
+            <span className={css.fieldName}>Last Name</span>
+            <Field
+              className={css.field}
+              name="lastName"
+              maxLength="30"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            <ErrorMessage name="lastName" component="div" />
+          </label>
+          <label className={css.label}>
             <span className={css.fieldName}>Email</span>
             <Field
               className={css.field}
               name="email"
+              maxLength="50"
               type="text"
               placeholder="Email"
+              required
             />
             <ErrorMessage name="email" component="div" />
           </label>
-          <label className={css.lable}>
+          <label className={css.label}>
             <span className={css.fieldName}>Phone</span>
             <Field
               className={css.field}
               name="phone"
               type="text"
               placeholder="Phone"
+              required
             />
             <ErrorMessage name="phone" component="div" />
           </label>
-          <label className={css.lable}>
+          <div>
+            <h3>Choose delivery method</h3>
+            <label className={css.label}>
+              <span className={css.fieldName}>Pick up from store</span>
+              <Field
+                className={css.field}
+                type="radio"
+                checked={deliveryMethod === 'Pick up from store'}
+                name="deliveryMethod"
+                value="Pick up from store"
+              />
+            </label>
+            <label className={css.label}>
+              <span className={css.fieldName}>Delivery to address</span>
+              <Field
+                className={css.field}
+                type="radio"
+                // checked={deliveryMethod === 'Delivery to address'}
+                name="deliveryMethod"
+                value="Delivery to address"
+              />
+            </label>
+            <label className={css.label}>
+              <span className={css.fieldName}>New Post</span>
+              <Field
+                className={css.field}
+                type="radio"
+                // checked={deliveryMethod === 'New Post'}
+                name="deliveryMethod"
+                value="New Post"
+              />
+            </label>
+          </div>
+          <label className={css.label}>
             <span className={css.fieldName}>Address</span>
             <Field
               className={css.field}
