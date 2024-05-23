@@ -74,7 +74,7 @@ const OrderCardList = () => {
     )
   );
 
-  const totalPrice = cartItems.reduce((sum, item) => {
+  const priceTotal = cartItems.reduce((sum, item) => {
     return sum + item.totalPrice;
   }, 0);
 
@@ -82,7 +82,7 @@ const OrderCardList = () => {
     <section className={css.sectionMedicine}>
       <ul className={css.listMedicine}>{elements}</ul>
       <p className={css.totalPrice}>
-        Total price: <span className={css.sum}>{totalPrice} $</span>
+        Total price: <span className={css.sum}>{priceTotal.toFixed(2)} $</span>
       </p>
     </section>
   );
