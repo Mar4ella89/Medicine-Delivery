@@ -4,12 +4,11 @@ import * as yup from 'yup';
 
 import css from './OrderForm.module.css';
 
-const deliveryMethod = [
+const deliveryMethod1 = [
   'Pick up from store',
   'Delivery to address',
   'New Post',
 ];
-// const age = ['18-25', '26-35', '36+'];
 
 const userSchema = yup.object().shape({
   name: yup.string().required(),
@@ -18,7 +17,7 @@ const userSchema = yup.object().shape({
   // phone: yup.string().min(6).max(32).required(),
   deliveryMethod: yup
     .string()
-    .oneOf(deliveryMethod)
+    .oneOf(deliveryMethod1)
     .required('Please enter your delivery method'),
   // address: yup.string().oneOf(age).required('Please enter your age'),
 });
@@ -37,6 +36,7 @@ const OrderForm = () => {
     <section className={css.section}>
       <Formik
         initialValues={initialValues}
+        validationSchema={userSchema}
         onSubmit={async values => {
           await new Promise(resolve => setTimeout(resolve, 500));
           alert(JSON.stringify(values, null, 2));
@@ -97,7 +97,6 @@ const OrderForm = () => {
               <Field
                 className={css.field}
                 type="radio"
-                checked={deliveryMethod === 'Pick up from store'}
                 name="deliveryMethod"
                 value="Pick up from store"
               />
@@ -107,7 +106,6 @@ const OrderForm = () => {
               <Field
                 className={css.field}
                 type="radio"
-                // checked={deliveryMethod === 'Delivery to address'}
                 name="deliveryMethod"
                 value="Delivery to address"
               />
@@ -117,7 +115,6 @@ const OrderForm = () => {
               <Field
                 className={css.field}
                 type="radio"
-                // checked={deliveryMethod === 'New Post'}
                 name="deliveryMethod"
                 value="New Post"
               />
