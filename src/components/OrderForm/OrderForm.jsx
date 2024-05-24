@@ -92,33 +92,35 @@ const OrderForm = () => {
           </label>
           <div>
             <h3>Choose delivery method</h3>
-            <label className={css.label}>
-              <span className={css.fieldName}>Pick up from store</span>
-              <Field
-                className={css.field}
-                type="radio"
-                name="deliveryMethod"
-                value="Pick up from store"
-              />
-            </label>
-            <label className={css.label}>
-              <span className={css.fieldName}>Delivery to address</span>
-              <Field
-                className={css.field}
-                type="radio"
-                name="deliveryMethod"
-                value="Delivery to address"
-              />
-            </label>
-            <label className={css.label}>
-              <span className={css.fieldName}>New Post</span>
-              <Field
-                className={css.field}
-                type="radio"
-                name="deliveryMethod"
-                value="New Post"
-              />
-            </label>
+            <div className={css.radio}>
+              <label className={css.label}>
+                <span className={css.fieldName}>Pick up from store</span>
+                <Field
+                  className={css.field}
+                  type="radio"
+                  name="deliveryMethod"
+                  value="Pick up from store"
+                />
+              </label>
+              <label className={css.label}>
+                <span className={css.fieldName}>Delivery to address</span>
+                <Field
+                  className={css.field}
+                  type="radio"
+                  name="deliveryMethod"
+                  value="Delivery to address"
+                />
+              </label>
+              <label className={css.label}>
+                <span className={css.fieldName}>New Post</span>
+                <Field
+                  className={css.field}
+                  type="radio"
+                  name="deliveryMethod"
+                  value="New Post"
+                />
+              </label>
+            </div>
           </div>
           <label className={css.label}>
             <span className={css.fieldName}>Address</span>
