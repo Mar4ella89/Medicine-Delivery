@@ -28,3 +28,14 @@
     background-color: #43b02a;
     color: #ffffff;
 }
+
+.radio {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.radioName {
+    display: inline-block;
+        margin-bottom: 10px;
+}

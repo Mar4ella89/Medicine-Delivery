@@ -93,8 +93,8 @@ const OrderForm = () => {
           <div>
             <h3>Choose delivery method</h3>
             <div className={css.radio}>
-              <label className={css.label}>
-                <span className={css.fieldName}>Pick up from store</span>
+              <label className={css.radioLabel}>
+                <span className={css.radioName}>Pick up from store</span>
                 <Field
                   className={css.field}
                   type="radio"
@@ -102,8 +102,8 @@ const OrderForm = () => {
                   value="Pick up from store"
                 />
               </label>
-              <label className={css.label}>
-                <span className={css.fieldName}>Delivery to address</span>
+              <label className={css.radioLabel}>
+                <span className={css.radioName}>Delivery to address</span>
                 <Field
                   className={css.field}
                   type="radio"
@@ -111,8 +111,8 @@ const OrderForm = () => {
                   value="Delivery to address"
                 />
               </label>
-              <label className={css.label}>
-                <span className={css.fieldName}>New Post</span>
+              <label className={css.radioLabel}>
+                <span className={css.radioName}>New Post</span>
                 <Field
                   className={css.field}
                   type="radio"
