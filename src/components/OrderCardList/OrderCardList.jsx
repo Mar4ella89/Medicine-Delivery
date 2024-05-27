@@ -81,9 +81,14 @@ const OrderCardList = () => {
   return (
     <section className={css.sectionMedicine}>
       <ul className={css.listMedicine}>{elements}</ul>
-      <p className={css.totalPrice}>
-        Total price: <span className={css.sum}>{priceTotal.toFixed(2)} $</span>
-      </p>
+      {cartItems ? (
+        <p className={css.totalPrice}>
+          Total price:
+          <span className={css.sum}> {priceTotal.toFixed(2)} $</span>
+        </p>
+      ) : (
+        <p>No order</p>
+      )}
     </section>
   );
 };
