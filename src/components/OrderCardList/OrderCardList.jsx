@@ -7,6 +7,8 @@ import css from './OrderCardList.module.css';
 const OrderCardList = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
 
+  console.log(cartItems);
+
   const handleRemoveClick = medicineId => {
     removeFromCart(medicineId);
   };
@@ -81,7 +83,7 @@ const OrderCardList = () => {
   return (
     <section className={css.sectionMedicine}>
       <ul className={css.listMedicine}>{elements}</ul>
-      {cartItems ? (
+      {cartItems.length ? (
         <p className={css.totalPrice}>
           Total price:
           <span className={css.sum}> {priceTotal.toFixed(2)} $</span>
