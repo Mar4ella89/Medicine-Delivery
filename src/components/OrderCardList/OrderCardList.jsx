@@ -25,7 +25,7 @@ const OrderCardList = () => {
   };
 
   const handleQuantityDecrease = (medicineId, quantity) => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       updateQuantity(medicineId, quantity - 1);
     }
   };
@@ -51,7 +51,7 @@ const OrderCardList = () => {
                   type="number"
                   value={quantity}
                   onChange={event => handleQuantityChange(_id, event)}
-                  min="0"
+                  min="1"
                   max="10"
                   required
                 />
