@@ -89,7 +89,7 @@ const OrderCardList = () => {
           <span className={css.sum}> {priceTotal.toFixed(2)} $</span>
         </p>
       ) : (
-        <p>No order</p>
+        <p className={css.order}>You don't have any item in your cart yet...</p>
       )}
     </section>
   );

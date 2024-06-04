@@ -90,3 +90,8 @@ display: flex;
 .sum {
     color: #000000;
 }
+
+.order {
+    text-align: center;
+    margin-top: 10px;
+}
