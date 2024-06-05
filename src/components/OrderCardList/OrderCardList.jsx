@@ -7,8 +7,6 @@ import css from './OrderCardList.module.css';
 const OrderCardList = () => {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
 
-  console.log(cartItems);
-
   const handleRemoveClick = medicineId => {
     removeFromCart(medicineId);
   };
