@@ -13,7 +13,7 @@ const OrderCardList = () => {
 
   const handleQuantityChange = (medicineId, event) => {
     const newQuantity = parseInt(event.target.value);
-    if (newQuantity >= 0) {
+    if (newQuantity > 0) {
       updateQuantity(medicineId, newQuantity);
     }
   };
