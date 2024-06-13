@@ -41,7 +41,10 @@ const OrderCardList = () => {
             </div>
             <div className={css.medicineOrder}>
               <div className={css.quantityWrapper}>
-                <button onClick={() => handleQuantityDecrease(_id, quantity)}>
+                <button
+                  className={css.button}
+                  onClick={() => handleQuantityDecrease(_id, quantity)}
+                >
                   -
                 </button>
                 <input
@@ -53,7 +56,10 @@ const OrderCardList = () => {
                   max="10"
                   required
                 />
-                <button onClick={() => handleQuantityIncrease(_id, quantity)}>
+                <button
+                  className={css.button}
+                  onClick={() => handleQuantityIncrease(_id, quantity)}
+                >
                   +
                 </button>
               </div>
