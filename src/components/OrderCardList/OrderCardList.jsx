@@ -37,7 +37,7 @@ const OrderCardList = () => {
           <div className={css.discription}>
             <div>
               <h3 className={css.subtitle}>{name}</h3>
-              <p>{price} $</p>
+              <p className={css.price}>{price} $</p>
             </div>
             <div className={css.medicineOrder}>
               <div className={css.quantityWrapper}>
