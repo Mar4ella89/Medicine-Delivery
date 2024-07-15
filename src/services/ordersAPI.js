@@ -12,7 +12,7 @@ export const allOrders = async () => {
   return data;
 };
 
-export const addOrders = async data => {
+export const addOrder = async data => {
   const { data: result } = await instance.post('/orders', data);
   return result;
 };
