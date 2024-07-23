@@ -1,6 +1,6 @@
 import Container from 'components/Container/Container';
 import OrderCardList from 'components/OrderCardList/OrderCardList';
-import OrderForm from 'components/OrderForm/OrderForm';
+import OrderDrugForm from 'components/OrderDrugForm/OrderDrugForm';
 
 import css from './ShoppingCart.module.css';
 
@@ -8,7 +8,7 @@ const ShoppingCart = () => {
   return (
     <Container>
       <div className={css.wrapper}>
-        <OrderForm />
+        <OrderDrugForm />
         <OrderCardList />
       </div>
     </Container>
