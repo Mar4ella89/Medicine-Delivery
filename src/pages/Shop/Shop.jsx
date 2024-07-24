@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import Container from 'components/Container/Container';
 import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
 import DrugOnMap from 'components/DrugOnMap/DrugOnMap';
+import DrugContext from 'contexts/DrugContext';
 
 import { allDrugs } from 'services/drugsAPI';
 import { allMedicines } from 'services/medicinesAPI';
@@ -11,8 +12,10 @@ import { allMedicines } from 'services/medicinesAPI';
 import css from './Shop.module.css';
 
 const Shop = () => {
+  const { filteredDrug, selectedPharmacy } = useContext(DrugContext);
+
   const [drugsItem, setDrugsItem] = useState([]);
-  const [selectedPharmacy, setSelectedPharmacy] = useState(null);
+  // const [selectedPharmacy, setSelectedPharmacy] = useState(null);
   const [medicineItems, setMedicineItems] = useState([]);
 
   useEffect(() => {
@@ -44,14 +47,14 @@ const Shop = () => {
     return pharmacyIdArr.includes(selectedPharmacy);
   });
 
-  const filteredDrug = drugsItem.find(({ _id }) => {
-    return _id === selectedPharmacy;
-  });
+  // const filteredDrug = drugsItem.find(({ _id }) => {
+  //   return _id === selectedPharmacy;
+  // });
 
   return (
     <Container>
       <div className={css.mapWrapper}>
-        <DrugOnMap currentDrug={filteredDrug} />
+        <DrugOnMap currentDrug={filteredDrug(drugsItem)} />
       </div>
 
       <div className={css.wrapper}>
