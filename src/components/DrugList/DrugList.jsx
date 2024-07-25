@@ -7,7 +7,7 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
     onSelectPharmacy(pharmacyId);
   };
 
-  const elements = drugsItem.map(({ _id, name, latitude, longitude }) => {
+  const elements = drugsItem.map(({ _id, name }) => {
     return (
       <li
         key={_id}

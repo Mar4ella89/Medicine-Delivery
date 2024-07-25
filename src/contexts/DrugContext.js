@@ -1,26 +1,45 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+
+import { allDrugs } from 'services/drugsAPI';
 
 const DrugContext = createContext({
+  drugsItem: [],
   filteredDrug: null,
-  selectedPharmacy: () => {},
+  selectedPharmacy: null,
+  setSelectedPharmacy: () => {},
 });
 
 export const DrugProvider = ({ children }) => {
-  //   const [filteredDrug, setFilteredDrug] = useState(null);
-  const [selectedDrug, setSelectedDrug] = useState(null);
+  // const [filteredDrug, setFilteredDrug] = useState(null);
+  const [selectedPharmacy, setSelectedPharmacy] = useState(null);
+  const [drugsItem, setDrugsItem] = useState([]);
+
+  useEffect(() => {
+    const fetchAllDrugs = async () => {
+      try {
+        const data = await allDrugs();
+        setDrugsItem(data);
+      } catch ({ response }) {
+        console.log(response.data.message);
+      }
+    };
+    fetchAllDrugs();
+  }, []);
 
   const filteredDrug = drugsItem =>
     drugsItem.find(({ _id }) => {
       return _id === selectedPharmacy;
     });
 
-  const selectedPharmacy = pharmacyId => setSelectedDrug(pharmacyId);
+  //   setSelectedPharmacy(pharmacyId);
 
   return (
-    <DrugContext.Provider value={{ filteredDrug, selectedPharmacy }}>
+    <DrugContext.Provider
+      value={{ filteredDrug, selectedPharmacy, setSelectedPharmacy, drugsItem }}
+    >
       {children}
     </DrugContext.Provider>
   );
 };
 
-export default DrugProvider;
+export default DrugContext;

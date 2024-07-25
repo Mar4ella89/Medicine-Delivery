@@ -3,32 +3,35 @@ import { useContext, useEffect, useState } from 'react';
 import Container from 'components/Container/Container';
 import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
-import DrugOnMap from 'components/DrugOnMap/DrugOnMap';
+// import DrugOnMap from 'components/DrugOnMap/DrugOnMap';
 import DrugContext from 'contexts/DrugContext';
 
-import { allDrugs } from 'services/drugsAPI';
+// import { allDrugs } from 'services/drugsAPI';
 import { allMedicines } from 'services/medicinesAPI';
 
 import css from './Shop.module.css';
 
 const Shop = () => {
-  const { filteredDrug, selectedPharmacy } = useContext(DrugContext);
+  const { filteredDrug, selectedPharmacy, setSelectedPharmacy, drugsItem } =
+    useContext(DrugContext);
 
-  const [drugsItem, setDrugsItem] = useState([]);
+  console.log(filteredDrug);
+
+  // const [drugsItem, setDrugsItem] = useState([]);
   // const [selectedPharmacy, setSelectedPharmacy] = useState(null);
   const [medicineItems, setMedicineItems] = useState([]);
 
-  useEffect(() => {
-    const fetchAllDrugs = async () => {
-      try {
-        const data = await allDrugs();
-        setDrugsItem(data);
-      } catch ({ response }) {
-        console.log(response.data.message);
-      }
-    };
-    fetchAllDrugs();
-  }, []);
+  // useEffect(() => {
+  //   const fetchAllDrugs = async () => {
+  //     try {
+  //       const data = await allDrugs();
+  //       setDrugsItem(data);
+  //     } catch ({ response }) {
+  //       console.log(response.data.message);
+  //     }
+  //   };
+  //   fetchAllDrugs();
+  // }, []);
 
   useEffect(() => {
     const fetchAllMedicines = async () => {
@@ -53,9 +56,9 @@ const Shop = () => {
 
   return (
     <Container>
-      <div className={css.mapWrapper}>
+      {/* <div className={css.mapWrapper}>
         <DrugOnMap currentDrug={filteredDrug(drugsItem)} />
-      </div>
+      </div> */}
 
       <div className={css.wrapper}>
         <DrugList
