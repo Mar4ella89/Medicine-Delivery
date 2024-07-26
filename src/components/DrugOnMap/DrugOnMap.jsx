@@ -10,8 +10,6 @@ const DrugOnMap = ({ currentDrug }) => {
     ? currentDrug.coordinates
     : defaultCoorditates;
 
-  console.log(latitude);
-
   return (
     <LoadScript googleMapsApiKey={'AIzaSyDKYZdu5xvm8s02742nhLWHdNVizpgEgsM'}>
       <GoogleMap
