@@ -10,7 +10,6 @@ const DrugContext = createContext({
 });
 
 export const DrugProvider = ({ children }) => {
-  // const [filteredDrug, setFilteredDrug] = useState(null);
   const [selectedPharmacy, setSelectedPharmacy] = useState(null);
   const [drugsItem, setDrugsItem] = useState([]);
 
@@ -30,8 +29,6 @@ export const DrugProvider = ({ children }) => {
     drugsItem.find(({ _id }) => {
       return _id === selectedPharmacy;
     });
-
-  //   setSelectedPharmacy(pharmacyId);
 
   return (
     <DrugContext.Provider
