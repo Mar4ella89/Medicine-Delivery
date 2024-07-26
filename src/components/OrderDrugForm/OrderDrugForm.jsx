@@ -10,12 +10,12 @@ const OrderDrugForm = () => {
   const { filteredDrug, drugsItem } = useContext(DrugContext);
   console.log(filteredDrug);
   return (
-    <>
+    <div className={css.formWrapper}>
       <div className={css.mapWrapper}>
         <DrugOnMap currentDrug={filteredDrug(drugsItem)} />
       </div>
       <OrderForm />
-    </>
+    </div>
   );
 };
 
