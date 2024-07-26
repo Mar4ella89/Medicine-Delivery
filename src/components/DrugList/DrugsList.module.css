@@ -32,3 +32,8 @@
     background-color: #43b02a;
     color: #ffffff;
 }
+
+.item:active {
+    background-color: #36be17;
+    color: #ffffff;
+}

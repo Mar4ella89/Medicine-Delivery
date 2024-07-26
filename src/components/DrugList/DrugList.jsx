@@ -1,8 +1,6 @@
 import css from './DrugsList.module.css';
 
 const DrugList = ({ drugsItem, onSelectPharmacy }) => {
-  console.log(drugsItem);
-
   const handlePharmacyClick = pharmacyId => {
     onSelectPharmacy(pharmacyId);
   };
