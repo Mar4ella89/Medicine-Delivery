@@ -14,7 +14,6 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
     return (
       <li
         key={_id}
-        // className={css.item}
         className={`${css.item} ${
           selectedPharmacyId === _id ? css.selected : ''
         }`}
