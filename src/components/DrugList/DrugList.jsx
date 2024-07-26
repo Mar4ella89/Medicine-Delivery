@@ -14,11 +14,9 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
     return (
       <li
         key={_id}
-        className={css.item + ' ' + css.selected}
-        // className={`${css.item} ${css.selected}`}
-        // className={`${css.item} ${
-        //   selectedPharmacyId === _id ? css.selected : ''
-        // }`}
+        className={`${css.item} ${
+          selectedPharmacyId === _id ? css.selected : ''
+        }`}
         onClick={() => handlePharmacyClick(_id)}
       >
         {name}
