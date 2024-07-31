@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const CartContext = createContext({
   cartItems: [],
@@ -8,7 +8,13 @@ const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    () => JSON.parse(window.localStorage.getItem('medicines')) ?? []
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem('medicines', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (medicines, medicineId) => {
     const existingItem = cartItems.find(({ _id }) => _id === medicineId);
@@ -42,7 +48,7 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (medicineId, newQuantity) => {
     setCartItems(
       cartItems.map(item => {
-                return item._id === medicineId
+        return item._id === medicineId
           ? {
               ...item,
               quantity: newQuantity,
