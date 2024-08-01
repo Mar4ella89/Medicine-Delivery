@@ -96,7 +96,7 @@ display: flex;
     margin-left: auto;
 }
 
-.totalPrice {
+.totalInfo {
     margin-top: 20px;
     text-align: right;
     text-transform: uppercase;
@@ -106,9 +106,14 @@ display: flex;
 
 .sum {
     color: #000000;
+    font-weight: 600;
 }
 
 .order {
     text-align: center;
+    margin-top: 10px;
+}
+
+.totalPrice {
     margin-top: 10px;
 }

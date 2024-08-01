@@ -84,14 +84,24 @@ const OrderCardList = () => {
     return sum + item.totalPrice;
   }, 0);
 
+  const quantityTotal = cartItems.reduce((sum, item) => {
+    return sum + item.quantity;
+  }, 0);
+
   return (
     <section className={css.sectionMedicine}>
       <ul className={css.listMedicine}>{elements}</ul>
       {cartItems.length ? (
-        <p className={css.totalPrice}>
-          Total price:
-          <span className={css.sum}> {priceTotal.toFixed(2)} $</span>
-        </p>
+        <div className={css.totalInfo}>
+          <p>
+            Selected medicines:
+            <span className={css.sum}> {quantityTotal} </span> pcs
+          </p>
+          <p className={css.totalPrice}>
+            Total price:
+            <span className={css.sum}> {priceTotal.toFixed(2)} </span> $
+          </p>
+        </div>
       ) : (
         <p className={css.order}>You don't have any item in your cart yet...</p>
       )}
