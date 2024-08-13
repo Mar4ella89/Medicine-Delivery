@@ -19,9 +19,6 @@ const Navbar = () => {
               Shoping cart
             </NavLink>
           </li>
-          {/* <li>
-          <MedicineSearchForm />
-        </li> */}
         </ul>
         <MedicineSearchForm />
       </div>
