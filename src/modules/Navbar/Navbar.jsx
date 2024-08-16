@@ -8,7 +8,7 @@ import css from './Navbar.module.css';
 const Navbar = () => {
   const [filter, setFilter] = useState('');
 
-  // const changeFilter = event => setFilter(event.currentTarget.value);
+  const changeFilter = event => setFilter(event.currentTarget.value);
 
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -35,8 +35,8 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-        <MedicineSearchForm value={filter} />
-        {/* <MedicineSearchForm value={filter} onChange={changeFilter} /> */}
+        {/* <MedicineSearchForm value={filter} /> */}
+        <MedicineSearchForm value={filter} onChange={changeFilter} />
       </div>
     </div>
   );
