@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 
 import css from './MedicineSearchForm.module.css';
 
-const MedicineSearchForm = ({ onSubmit }) => {
+// const MedicineSearchForm = ({ onSubmit }) => {
+const MedicineSearchForm = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleNameChange = event => {
@@ -18,21 +19,22 @@ const MedicineSearchForm = ({ onSubmit }) => {
     setSearchQuery('');
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  // const handleSubmit = event => {
+  //   event.preventDefault();
 
-    if (searchQuery.trim() === '') {
-      return toast.warn('Please enter a search term in the search box');
-    }
+  //   if (searchQuery.trim() === '') {
+  //     return toast.warn('Please enter a search term in the search box');
+  //   }
 
-    onSubmit(searchQuery);
-    reset();
-  };
+  //   onSubmit(searchQuery);
+  //   reset();
+  // };
 
   return (
     <div className={css.SearcWrapper}>
       <header className={css.Searchbar}>
-        <form className={css.SearchForm} onSubmit={handleSubmit}>
+        <form className={css.SearchForm}>
+          {/* <form className={css.SearchForm} onSubmit={handleSubmit}> */}
           <button type="submit" className={css.SearchFormButton}>
             <ImSearch
               style={{
@@ -57,8 +59,8 @@ const MedicineSearchForm = ({ onSubmit }) => {
   );
 };
 
-MedicineSearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// MedicineSearchForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
 
 export default MedicineSearchForm;

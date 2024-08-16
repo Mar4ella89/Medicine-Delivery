@@ -1,6 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 
+import { allMedicines } from 'services/medicinesAPI';
+
 const CartContext = createContext({
+  medicineItems: [],
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -8,6 +11,20 @@ const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
+  const [medicineItems, setMedicineItems] = useState([]);
+
+  useEffect(() => {
+    const fetchAllMedicines = async () => {
+      try {
+        const data = await allMedicines();
+        setMedicineItems(data);
+      } catch ({ response }) {
+        console.log(response.data.message);
+      }
+    };
+    fetchAllMedicines();
+  }, []);
+
   const [cartItems, setCartItems] = useState(
     () => JSON.parse(window.localStorage.getItem('medicines')) ?? []
   );
@@ -62,6 +79,7 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
+        medicineItems,
         cartItems,
         addToCart,
         removeFromCart,

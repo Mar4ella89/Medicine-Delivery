@@ -1,24 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import MedicineSearchForm from 'modules/MedicineSearchForm/MedicineSearchForm';
+import CartContext from 'contexts/CartContext';
 
 import css from './Navbar.module.css';
 
 const Navbar = () => {
+  const { medicineItems } = useContext(CartContext);
+
   const [filter, setFilter] = useState('');
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
-  const getVisibleContacts = () => {
+  const getVisibleMedicines = () => {
     const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(({ name }) => {
+    return medicineItems.filter(({ name }) => {
       return name.toLowerCase().includes(normalizedFilter);
     });
   };
 
-  const visibleContacts = getVisibleContacts();
+  const visibleMedicines = getVisibleMedicines();
 
   return (
     <div className={css.navbar}>
@@ -36,7 +39,8 @@ const Navbar = () => {
           </li>
         </ul>
         {/* <MedicineSearchForm value={filter} /> */}
-        <MedicineSearchForm value={filter} onChange={changeFilter} />
+        {/* <MedicineSearchForm value={filter} onChange={changeFilter} /> */}
+        <MedicineSearchForm />
       </div>
     </div>
   );
