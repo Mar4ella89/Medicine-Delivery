@@ -7,21 +7,24 @@ import CartContext from 'contexts/CartContext';
 import css from './Navbar.module.css';
 
 const Navbar = () => {
-  const { medicineItems } = useContext(CartContext);
+  const { filter, changeFilter } = useContext(CartContext);
 
-  const [filter, setFilter] = useState('');
+  // const changeFilter = event =>
+  //   (filter = event.currentTarget.value.toLowerCase());
 
-  const changeFilter = event => setFilter(event.currentTarget.value);
+  // const [filter, setFilter] = useState('');
 
-  const getVisibleMedicines = () => {
-    const normalizedFilter = filter.toLowerCase();
+  // const changeFilter = event => setFilter(event.currentTarget.value);
 
-    return medicineItems.filter(({ name }) => {
-      return name.toLowerCase().includes(normalizedFilter);
-    });
-  };
+  // const getVisibleMedicines = () => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-  const visibleMedicines = getVisibleMedicines();
+  //   return medicineItems.filter(({ name }) => {
+  //     return name.toLowerCase().includes(normalizedFilter);
+  //   });
+  // };
+
+  // const visibleMedicines = getVisibleMedicines();
 
   return (
     <div className={css.navbar}>
@@ -40,7 +43,7 @@ const Navbar = () => {
         </ul>
         {/* <MedicineSearchForm value={filter} /> */}
         {/* <MedicineSearchForm value={filter} onChange={changeFilter} /> */}
-        <MedicineSearchForm />
+        <MedicineSearchForm value={filter} onChange={changeFilter} />
       </div>
     </div>
   );

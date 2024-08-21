@@ -8,33 +8,34 @@ import PropTypes from 'prop-types';
 import css from './MedicineSearchForm.module.css';
 
 // const MedicineSearchForm = ({ onSubmit }) => {
-const MedicineSearchForm = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+const MedicineSearchForm = ({ value, onChange }) => {
+  // const [searchQuery, setSearchQuery] = useState('');
 
-  const handleNameChange = event => {
-    setSearchQuery(event.currentTarget.value.toLowerCase());
-  };
+  // const handleNameChange = event => {
+  //   setSearchQuery(event.currentTarget.value.toLowerCase());
+  // };
 
   const reset = () => {
-    setSearchQuery('');
+    value = '';
   };
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
 
-  //   if (searchQuery.trim() === '') {
-  //     return toast.warn('Please enter a search term in the search box');
-  //   }
+    if (value.trim() === '') {
+      return toast.warn('Please enter a search term in the search box');
+    }
 
-  //   onSubmit(searchQuery);
-  //   reset();
-  // };
+    // onSubmit(searchQuery);
+    reset();
+  };
 
   return (
     <div className={css.SearcWrapper}>
       <header className={css.Searchbar}>
-        <form className={css.SearchForm}>
-          {/* <form className={css.SearchForm} onSubmit={handleSubmit}> */}
+        {/* <form className={css.SearchForm}> */}
+        <form className={css.SearchForm} onSubmit={handleSubmit}>
+          {/* <form className={css.SearchForm} onSubmit={onSubmit}> */}
           <button type="submit" className={css.SearchFormButton}>
             <ImSearch
               style={{
@@ -47,8 +48,8 @@ const MedicineSearchForm = () => {
             className={css.SearchFormInput}
             type="text"
             name="searchQuery"
-            value={searchQuery}
-            onChange={handleNameChange}
+            value={value}
+            onChange={onChange}
             autoComplete="off"
             autoFocus
             placeholder="Search medicines"

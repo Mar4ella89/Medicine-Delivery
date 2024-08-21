@@ -14,7 +14,7 @@ const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { medicineItems } = useContext(CartContext);
+  const { medicineItems, filter } = useContext(CartContext);
 
   // const [medicineItems, setMedicineItems] = useState([]);
 
@@ -30,10 +30,24 @@ const Shop = () => {
   //   fetchAllMedicines();
   // }, []);
 
-  const filteredMedicines = medicineItems.filter(medicine => {
+  const getVisibleMedicines = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return medicineItems.filter(({ name }) => {
+      return name.toLowerCase().includes(normalizedFilter);
+    });
+  };
+
+  const visibleMedicines = getVisibleMedicines();
+
+  const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
     return pharmacyIdArr.includes(selectedPharmacy);
   });
+
+  // const [filter, setFilter] = useState('');
+
+  // const changeFilter = event => setFilter(event.currentTarget.value);
 
   return (
     <Container>
@@ -42,8 +56,11 @@ const Shop = () => {
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
-        <MedicineCardList
+        {/* <MedicineCardList
           medicines={selectedPharmacy ? filteredMedicines : medicineItems}
+        /> */}
+        <MedicineCardList
+          medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
         />
       </div>
     </Container>

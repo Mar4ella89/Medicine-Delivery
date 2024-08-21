@@ -3,6 +3,8 @@ import React, { createContext, useState, useEffect } from 'react';
 import { allMedicines } from 'services/medicinesAPI';
 
 const CartContext = createContext({
+  filter: null,
+  changeFilter: () => {},
   medicineItems: [],
   cartItems: [],
   addToCart: () => {},
@@ -76,9 +78,15 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const [filter, setFilter] = useState('');
+
+  const changeFilter = event => setFilter(event.currentTarget.value);
+
   return (
     <CartContext.Provider
       value={{
+        filter,
+        changeFilter,
         medicineItems,
         cartItems,
         addToCart,
