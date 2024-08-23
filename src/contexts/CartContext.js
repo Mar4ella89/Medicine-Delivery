@@ -5,6 +5,8 @@ import { allMedicines } from 'services/medicinesAPI';
 const CartContext = createContext({
   filter: null,
   changeFilter: () => {},
+  getVisibleMedicines: () => {},
+  visibleMedicines: [],
   medicineItems: [],
   cartItems: [],
   addToCart: () => {},
@@ -79,14 +81,27 @@ export const CartProvider = ({ children }) => {
   };
 
   const [filter, setFilter] = useState('');
+  // const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
 
   const changeFilter = event => setFilter(event.currentTarget.value);
+
+  const getVisibleMedicines = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return medicineItems.filter(({ name }) => {
+      return name.toLowerCase().includes(normalizedFilter);
+    });
+  };
+
+  // const visibleMedicines = getVisibleMedicines();
 
   return (
     <CartContext.Provider
       value={{
         filter,
         changeFilter,
+        getVisibleMedicines,
+        visibleMedicines,
         medicineItems,
         cartItems,
         addToCart,

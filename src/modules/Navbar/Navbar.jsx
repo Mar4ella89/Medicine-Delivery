@@ -25,6 +25,11 @@ const Navbar = () => {
   // };
 
   // const visibleMedicines = getVisibleMedicines();
+  // const handleFormSubmit = filter => {
+  //   setSearchParams({ searchQuery });
+  //   setMovieItems([]);
+  //   setPage(1);
+  // };
 
   return (
     <div className={css.navbar}>

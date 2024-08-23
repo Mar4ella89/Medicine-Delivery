@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+
 import Container from 'components/Container/Container';
 import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
@@ -7,38 +10,33 @@ import DrugContext from 'contexts/DrugContext';
 import CartContext from 'contexts/CartContext';
 
 // import { allMedicines } from 'services/medicinesAPI';
-
+import 'react-toastify/dist/ReactToastify.css';
 import css from './Shop.module.css';
 
 const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { medicineItems, filter } = useContext(CartContext);
+  const { medicineItems, filter, getVisibleMedicines, visibleMedicines } =
+    useContext(CartContext);
 
   // const [medicineItems, setMedicineItems] = useState([]);
-
+  // getVisibleMedicines();
   // useEffect(() => {
-  //   const fetchAllMedicines = async () => {
-  //     try {
-  //       const data = await allMedicines();
-  //       setMedicineItems(data);
-  //     } catch ({ response }) {
-  //       console.log(response.data.message);
-  //     }
-  //   };
-  //   fetchAllMedicines();
+  //   getVisibleMedicines();
   // }, []);
 
-  const getVisibleMedicines = () => {
-    const normalizedFilter = filter.toLowerCase();
+  // const getVisibleMedicines = () => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-    return medicineItems.filter(({ name }) => {
-      return name.toLowerCase().includes(normalizedFilter);
-    });
-  };
+  //   return medicineItems.filter(({ name }) => {
+  //     return name.toLowerCase().includes(normalizedFilter);
+  //   });
+  // };
 
-  const visibleMedicines = getVisibleMedicines();
+  // const visibleMedicines = getVisibleMedicines();
+  console.log(medicineItems);
+  console.log(visibleMedicines);
 
   const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
@@ -63,6 +61,7 @@ const Shop = () => {
           medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
         />
       </div>
+      <ToastContainer autoClose={3000} position="bottom-right" />
     </Container>
   );
 };

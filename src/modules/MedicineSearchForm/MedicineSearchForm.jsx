@@ -1,14 +1,16 @@
-import { ImSearch } from 'react-icons/im';
-
+import { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
-
-import { useState } from 'react';
+import { ImSearch } from 'react-icons/im';
 import PropTypes from 'prop-types';
+
+import CartContext from 'contexts/CartContext';
 
 import css from './MedicineSearchForm.module.css';
 
 // const MedicineSearchForm = ({ onSubmit }) => {
 const MedicineSearchForm = ({ value, onChange }) => {
+  const { medicineItems, filter, getVisibleMedicines } =
+    useContext(CartContext);
   // const [searchQuery, setSearchQuery] = useState('');
 
   // const handleNameChange = event => {
@@ -26,7 +28,7 @@ const MedicineSearchForm = ({ value, onChange }) => {
       return toast.warn('Please enter a search term in the search box');
     }
 
-    // onSubmit(searchQuery);
+    getVisibleMedicines();
     reset();
   };
 
