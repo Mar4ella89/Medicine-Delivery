@@ -80,20 +80,36 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  console.log(medicineItems);
+
   const [filter, setFilter] = useState('');
-  // const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
+  const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
+
+  console.log(visibleMedicines);
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
   const getVisibleMedicines = () => {
     const normalizedFilter = filter.toLowerCase();
 
-    return medicineItems.filter(({ name }) => {
-      return name.toLowerCase().includes(normalizedFilter);
-    });
+    // return medicineItems.filter(({ name }) => {
+    //   return name.toLowerCase().includes(normalizedFilter);
+    // });
+    if (filter === '') {
+      setVisibleMedicines(medicineItems);
+    }
+
+    setVisibleMedicines(
+      medicineItems.filter(({ name }) => {
+        return name.toLowerCase().includes(normalizedFilter);
+      })
+    );
   };
 
-  // const visibleMedicines = getVisibleMedicines();
+  useEffect(() => {
+    // Фильтрация при изменении medicineItems
+    getVisibleMedicines();
+  }, [medicineItems]);
 
   return (
     <CartContext.Provider
