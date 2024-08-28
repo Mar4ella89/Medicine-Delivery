@@ -25,7 +25,7 @@ const MedicineSearchForm = ({ value, onChange }) => {
     event.preventDefault();
 
     if (value.trim() === '') {
-      return toast.warn('Please enter a search term in the search box');
+      toast.warn('Please enter a search term in the search box');
     }
 
     getVisibleMedicines();
