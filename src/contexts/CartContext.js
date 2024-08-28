@@ -80,12 +80,8 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  console.log(medicineItems);
-
   const [filter, setFilter] = useState('');
   const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
-
-  console.log(visibleMedicines);
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
