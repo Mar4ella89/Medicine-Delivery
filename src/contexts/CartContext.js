@@ -92,9 +92,6 @@ export const CartProvider = ({ children }) => {
   const getVisibleMedicines = () => {
     const normalizedFilter = filter.toLowerCase();
 
-    // return medicineItems.filter(({ name }) => {
-    //   return name.toLowerCase().includes(normalizedFilter);
-    // });
     if (normalizedFilter === '') {
       setVisibleMedicines(medicineItems);
       return;
