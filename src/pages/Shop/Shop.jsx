@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -15,9 +15,17 @@ const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { visibleMedicines } = useContext(CartContext);
+  const { getVisibleMedicines, visibleMedicines, visible } =
+    useContext(CartContext);
 
-  const filteredMedicines = visibleMedicines.filter(medicine => {
+  // useEffect(() => {
+  //   // Фильтрация при изменении medicineItems
+  //   getVisibleMedicines();
+  // }, [medicineItems]);
+
+  // const visible = getVisibleMedicines();
+  const filteredMedicines = visible.filter(medicine => {
+    // const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
     return pharmacyIdArr.includes(selectedPharmacy);
   });
@@ -30,7 +38,8 @@ const Shop = () => {
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
         <MedicineCardList
-          medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
+          // medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
+          medicines={selectedPharmacy ? filteredMedicines : visible}
         />
       </div>
       <ToastContainer autoClose={3000} position="bottom-right" />

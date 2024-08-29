@@ -5,13 +5,14 @@ import { allMedicines } from 'services/medicinesAPI';
 const CartContext = createContext({
   filter: null,
   changeFilter: () => {},
+  medicineItems: [],
   getVisibleMedicines: () => {},
   visibleMedicines: [],
-  medicineItems: [],
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
+  visible: [],
 });
 
 export const CartProvider = ({ children }) => {
@@ -81,29 +82,43 @@ export const CartProvider = ({ children }) => {
   };
 
   const [filter, setFilter] = useState('');
-  const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
+  const [visibleMedicines, setVisibleMedicines] = useState();
+
+  console.log(filter);
+
+  console.log(medicineItems);
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
   const getVisibleMedicines = () => {
     const normalizedFilter = filter.toLowerCase();
 
+    // if (normalizedFilter === '') {
+    //   setVisibleMedicines(medicineItems);
+    //   return;
+    // }
     if (normalizedFilter === '') {
-      setVisibleMedicines(medicineItems);
-      return;
+      return medicineItems;
     }
 
-    setVisibleMedicines(
-      medicineItems.filter(({ name }) => {
-        return name.toLowerCase().includes(normalizedFilter);
-      })
-    );
+    // setVisibleMedicines(
+    //   medicineItems.filter(({ name }) => {
+    //     return name.toLowerCase().includes(normalizedFilter);
+    //   })
+    // );
+
+    return medicineItems.filter(({ name }) => {
+      return name.toLowerCase().includes(normalizedFilter);
+    });
   };
 
-  useEffect(() => {
-    // Фильтрация при изменении medicineItems
-    getVisibleMedicines();
-  }, [medicineItems]);
+  // useEffect(() => {
+  //   // Фильтрация при изменении medicineItems
+  //   getVisibleMedicines();
+  // }, [medicineItems]);
+  const visible = getVisibleMedicines();
+
+  console.log(visible);
 
   return (
     <CartContext.Provider
@@ -117,6 +132,7 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQuantity,
+        visible,
       }}
     >
       {children}
