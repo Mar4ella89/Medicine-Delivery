@@ -5,7 +5,6 @@ import { allMedicines } from 'services/medicinesAPI';
 const CartContext = createContext({
   filter: null,
   changeFilter: () => {},
-  medicineItems: [],
   getVisibleMedicines: () => {},
   visibleMedicines: [],
   cartItems: [],
@@ -114,7 +113,6 @@ export const CartProvider = ({ children }) => {
         changeFilter,
         getVisibleMedicines,
         visibleMedicines,
-        medicineItems,
         cartItems,
         addToCart,
         removeFromCart,
