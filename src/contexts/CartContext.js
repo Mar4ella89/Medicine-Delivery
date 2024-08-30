@@ -22,7 +22,6 @@ export const CartProvider = ({ children }) => {
       try {
         const data = await allMedicines();
         setMedicineItems(data);
-        // getVisibleMedicines('');
       } catch ({ response }) {
         console.log(response.data.message);
       }
@@ -107,9 +106,6 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     getVisibleMedicines('');
   }, [getVisibleMedicines]);
-
-  console.log(medicineItems);
-  console.log(visibleMedicines);
 
   return (
     <CartContext.Provider
