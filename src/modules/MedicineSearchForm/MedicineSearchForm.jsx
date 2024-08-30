@@ -1,15 +1,13 @@
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { ImSearch } from 'react-icons/im';
-import PropTypes from 'prop-types';
 
 import CartContext from 'contexts/CartContext';
 
 import css from './MedicineSearchForm.module.css';
 
 const MedicineSearchForm = () => {
-  const { getVisibleMedicines, medicineItems, filter, changeFilter } =
-    useContext(CartContext);
+  const { getVisibleMedicines, filter, changeFilter } = useContext(CartContext);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -18,7 +16,7 @@ const MedicineSearchForm = () => {
       toast.warn('Please enter a search term in the search box');
     }
 
-    getVisibleMedicines(medicineItems);
+    getVisibleMedicines();
   };
 
   return (
@@ -47,11 +45,6 @@ const MedicineSearchForm = () => {
       </header>
     </div>
   );
-};
-
-MedicineSearchForm.propTypes = {
-  filter: PropTypes.string,
-  changeFilter: PropTypes.func,
 };
 
 export default MedicineSearchForm;

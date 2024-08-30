@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -15,18 +15,9 @@ const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { getVisibleMedicines, visibleMedicines } = useContext(CartContext);
-  // getVisibleMedicines();
+  const { visibleMedicines } = useContext(CartContext);
 
-  // useEffect(() => {
-  //   // Фильтрация при изменении medicineItems
-  //   getVisibleMedicines(medicineItems);
-  // }, [medicineItems]);
-
-  // const visible = getVisibleMedicines();
-  console.dir(visibleMedicines);
   const filteredMedicines = visibleMedicines.filter(medicine => {
-    // const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
     return pharmacyIdArr.includes(selectedPharmacy);
   });
@@ -39,7 +30,6 @@ const Shop = () => {
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
         <MedicineCardList
-          // medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
           medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
         />
       </div>

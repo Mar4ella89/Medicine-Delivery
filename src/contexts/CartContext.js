@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 import { allMedicines } from 'services/medicinesAPI';
 
@@ -22,6 +22,7 @@ export const CartProvider = ({ children }) => {
       try {
         const data = await allMedicines();
         setMedicineItems(data);
+        // getVisibleMedicines('');
       } catch ({ response }) {
         console.log(response.data.message);
       }
@@ -85,25 +86,27 @@ export const CartProvider = ({ children }) => {
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
-  const getVisibleMedicines = medicineItems => {
-    const normalizedFilter = filter.toLowerCase();
+  const getVisibleMedicines = useCallback(
+    (searchFilter = filter) => {
+      const normalizedFilter = searchFilter.toLowerCase();
 
-    if (normalizedFilter === '') {
-      setVisibleMedicines(medicineItems);
-      return;
-    }
+      if (normalizedFilter === '') {
+        setVisibleMedicines(medicineItems);
+        return;
+      }
 
-    setVisibleMedicines(
-      medicineItems.filter(({ name }) => {
-        return name.toLowerCase().includes(normalizedFilter);
-      })
-    );
-  };
+      setVisibleMedicines(
+        medicineItems.filter(({ name }) => {
+          return name.toLowerCase().includes(normalizedFilter);
+        })
+      );
+    },
+    [filter, medicineItems]
+  );
 
   useEffect(() => {
-    // Фильтрация при изменении medicineItems
-    getVisibleMedicines(medicineItems);
-  }, [medicineItems]);
+    getVisibleMedicines('');
+  }, [getVisibleMedicines]);
 
   console.log(medicineItems);
   console.log(visibleMedicines);
