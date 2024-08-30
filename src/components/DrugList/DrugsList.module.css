@@ -12,6 +12,7 @@
     color: #ffffff;
     font-size: 24px;
     text-transform: uppercase;
+    margin-top: 15px;
 }
 
 .item {
@@ -30,11 +31,11 @@
 
 .item:hover,
 .item:focus {
-    background-color: #43b02a;
+    background-color: #74c562;
     color: #ffffff;
 }
 
 .item.selected {
-    background-color: #43b02a;
+    background-color: #5dcf43;
         color: #ffffff;
 }

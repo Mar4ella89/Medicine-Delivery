@@ -10,6 +10,11 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
     setSelectedPharmacyId(pharmacyId);
   };
 
+  const handleAllClick = () => {
+    onSelectPharmacy('');
+    setSelectedPharmacyId('');
+  };
+
   const elements = drugsItem.map(({ _id, name }) => {
     return (
       <li
@@ -26,7 +31,15 @@ const DrugList = ({ drugsItem, onSelectPharmacy }) => {
 
   return (
     <section className={css.sectionDrug}>
-      <h1 className={css.title}>drugstore:</h1>
+      <p
+        className={`${css.item} ${
+          selectedPharmacyId === '' ? css.selected : ''
+        }`}
+        onClick={() => handleAllClick()}
+      >
+        All drugs
+      </p>
+      <h2 className={css.title}>drugstore:</h2>
       <ul>{elements}</ul>
     </section>
   );
