@@ -1,14 +1,10 @@
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import MedicineSearchForm from 'modules/MedicineSearchForm/MedicineSearchForm';
-import CartContext from 'contexts/CartContext';
 
 import css from './Navbar.module.css';
 
 const Navbar = () => {
-  // const { filter, changeFilter } = useContext(CartContext);
-
   return (
     <div className={css.navbar}>
       <div className={css.wrapper}>
@@ -25,7 +21,6 @@ const Navbar = () => {
           </li>
         </ul>
         <MedicineSearchForm />
-        {/* <MedicineSearchForm value={filter} onChange={changeFilter} /> */}
       </div>
     </div>
   );
