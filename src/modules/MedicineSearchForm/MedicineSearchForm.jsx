@@ -7,22 +7,18 @@ import CartContext from 'contexts/CartContext';
 
 import css from './MedicineSearchForm.module.css';
 
-const MedicineSearchForm = ({ value, onChange }) => {
-  const { getVisibleMedicines } = useContext(CartContext);
-
-  const reset = () => {
-    value = '';
-  };
+const MedicineSearchForm = () => {
+  const { getVisibleMedicines, medicineItems, filter, changeFilter } =
+    useContext(CartContext);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (value.trim() === '') {
+    if (filter.trim() === '') {
       toast.warn('Please enter a search term in the search box');
     }
 
-    getVisibleMedicines();
-    reset();
+    getVisibleMedicines(medicineItems);
   };
 
   return (
@@ -41,8 +37,8 @@ const MedicineSearchForm = ({ value, onChange }) => {
             className={css.SearchFormInput}
             type="text"
             name="searchQuery"
-            value={value}
-            onChange={onChange}
+            value={filter}
+            onChange={changeFilter}
             autoComplete="off"
             autoFocus
             placeholder="Search medicines"
@@ -54,8 +50,8 @@ const MedicineSearchForm = ({ value, onChange }) => {
 };
 
 MedicineSearchForm.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  filter: PropTypes.string,
+  changeFilter: PropTypes.func,
 };
 
 export default MedicineSearchForm;

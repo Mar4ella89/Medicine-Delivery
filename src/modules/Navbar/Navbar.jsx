@@ -7,7 +7,7 @@ import CartContext from 'contexts/CartContext';
 import css from './Navbar.module.css';
 
 const Navbar = () => {
-  const { filter, changeFilter } = useContext(CartContext);
+  // const { filter, changeFilter } = useContext(CartContext);
 
   return (
     <div className={css.navbar}>
@@ -24,8 +24,8 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-
-        <MedicineSearchForm value={filter} onChange={changeFilter} />
+        <MedicineSearchForm />
+        {/* <MedicineSearchForm value={filter} onChange={changeFilter} /> */}
       </div>
     </div>
   );

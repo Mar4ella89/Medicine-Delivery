@@ -15,16 +15,17 @@ const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { getVisibleMedicines, visibleMedicines, visible } =
-    useContext(CartContext);
+  const { getVisibleMedicines, visibleMedicines } = useContext(CartContext);
+  // getVisibleMedicines();
 
   // useEffect(() => {
   //   // Фильтрация при изменении medicineItems
-  //   getVisibleMedicines();
+  //   getVisibleMedicines(medicineItems);
   // }, [medicineItems]);
 
   // const visible = getVisibleMedicines();
-  const filteredMedicines = visible.filter(medicine => {
+  console.dir(visibleMedicines);
+  const filteredMedicines = visibleMedicines.filter(medicine => {
     // const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
     return pharmacyIdArr.includes(selectedPharmacy);
@@ -39,7 +40,7 @@ const Shop = () => {
         />
         <MedicineCardList
           // medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
-          medicines={selectedPharmacy ? filteredMedicines : visible}
+          medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
         />
       </div>
       <ToastContainer autoClose={3000} position="bottom-right" />
