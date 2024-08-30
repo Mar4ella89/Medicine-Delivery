@@ -12,7 +12,6 @@ const CartContext = createContext({
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
-  // visible: [],
 });
 
 export const CartProvider = ({ children }) => {
@@ -84,10 +83,6 @@ export const CartProvider = ({ children }) => {
   const [filter, setFilter] = useState('');
   const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
 
-  console.log(filter);
-
-  // console.log(medicineItems);
-
   const changeFilter = event => setFilter(event.currentTarget.value);
 
   const getVisibleMedicines = medicineItems => {
@@ -97,28 +92,19 @@ export const CartProvider = ({ children }) => {
       setVisibleMedicines(medicineItems);
       return;
     }
-    // if (normalizedFilter === '') {
-    //   return medicineItems;
-    // }
 
     setVisibleMedicines(
       medicineItems.filter(({ name }) => {
         return name.toLowerCase().includes(normalizedFilter);
       })
     );
-
-    // return medicineItems.filter(({ name }) => {
-    //   return name.toLowerCase().includes(normalizedFilter);
-    // });
   };
 
   useEffect(() => {
     // Фильтрация при изменении medicineItems
     getVisibleMedicines(medicineItems);
   }, [medicineItems]);
-  // const visible = getVisibleMedicines();
 
-  // console.log(visible);
   console.log(medicineItems);
   console.log(visibleMedicines);
 
@@ -134,7 +120,6 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQuantity,
-        // visible,
       }}
     >
       {children}
