@@ -80,31 +80,28 @@ export const CartProvider = ({ children }) => {
   };
 
   const [filter, setFilter] = useState('');
-  const [visibleMedicines, setVisibleMedicines] = useState(medicineItems);
+  const [visibleMedicines, setVisibleMedicines] = useState([]);
 
   const changeFilter = event => setFilter(event.currentTarget.value);
 
-  const getVisibleMedicines = useCallback(
-    (searchFilter = filter) => {
-      const normalizedFilter = searchFilter.toLowerCase();
+  const getVisibleMedicines = useCallback(() => {
+    const normalizedFilter = filter.toLowerCase();
 
-      if (normalizedFilter === '') {
-        setVisibleMedicines(medicineItems);
-        return;
-      }
+    if (normalizedFilter === '') {
+      setVisibleMedicines(medicineItems);
+      return;
+    }
 
-      setVisibleMedicines(
-        medicineItems.filter(({ name }) => {
-          return name.toLowerCase().includes(normalizedFilter);
-        })
-      );
-    },
-    [filter, medicineItems]
-  );
+    setVisibleMedicines(
+      medicineItems.filter(({ name }) => {
+        return name.toLowerCase().includes(normalizedFilter);
+      })
+    );
+  }, [filter, medicineItems]);
 
   useEffect(() => {
-    getVisibleMedicines('');
-  }, [getVisibleMedicines]);
+    setVisibleMedicines(medicineItems);
+  }, [medicineItems]);
 
   return (
     <CartContext.Provider
