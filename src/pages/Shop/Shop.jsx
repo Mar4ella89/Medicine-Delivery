@@ -24,11 +24,19 @@ const Shop = () => {
 
   return (
     <Container>
+      <div>
+        Sorting:
+        <span>Favorites</span>
+        <span>From cheap to expensive</span>
+        <span>From expensive to cheap</span>
+        <span>Sort by Name (A to Z)</span>
+      </div>
       <div className={css.wrapper}>
         <DrugList
           drugsItem={drugsItem}
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
+
         <MedicineCardList
           medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
         />
