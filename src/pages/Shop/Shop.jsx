@@ -7,6 +7,7 @@ import MedicineCardList from 'components/MedicineCardList/MedicineCardList';
 import DrugList from 'components/DrugList/DrugList';
 import DrugContext from 'contexts/DrugContext';
 import CartContext from 'contexts/CartContext';
+import SortingControls from 'components/SortingControls/SortingControls';
 
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Shop.module.css';
@@ -51,13 +52,11 @@ const Shop = () => {
 
   return (
     <Container>
-      <div>
-        Sorting:
-        <span>Favorites</span>
-        <span onClick={handleSortFromCheap}>From cheap to expensive</span>
-        <span onClick={handleSortFromExpensive}>From expensive to cheap</span>
-        <span onClick={handleSortByName}>Sort by Name (A to Z)</span>
-      </div>
+      <SortingControls
+        onSortFromCheap={handleSortFromCheap}
+        onSortFromExpensive={handleSortFromExpensive}
+        onSortByName={handleSortByName}
+      />
       <div className={css.wrapper}>
         <DrugList
           drugsItem={drugsItem}

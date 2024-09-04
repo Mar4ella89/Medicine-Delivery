@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sortingItem {
+    border: 1px solid #8ee97a;
+    border-radius: 5px ;
+    margin-left: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+}
