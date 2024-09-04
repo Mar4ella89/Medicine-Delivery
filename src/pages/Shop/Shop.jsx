@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useMemo } from 'react';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -22,14 +22,41 @@ const Shop = () => {
     return pharmacyIdArr.includes(selectedPharmacy);
   });
 
+  const medicinesList = selectedPharmacy ? filteredMedicines : visibleMedicines;
+
+  const [sortOrder, setSortOrder] = useState('default');
+
+  const sortedMedicines = useMemo(() => {
+    if (sortOrder === 'default') return medicinesList;
+    if (sortOrder === 'cheapToExpensive')
+      return [...medicinesList].sort((a, b) => a.price - b.price);
+    if (sortOrder === 'expensiveToCheap')
+      return [...medicinesList].sort((a, b) => b.price - a.price);
+    if (sortOrder === 'nameAZ')
+      return [...medicinesList].sort((a, b) => a.name.localeCompare(b.name));
+    return medicinesList;
+  }, [medicinesList, sortOrder]);
+
+  const handleSortFromCheap = () => {
+    setSortOrder('cheapToExpensive');
+  };
+
+  const handleSortFromExpensive = () => {
+    setSortOrder('expensiveToCheap');
+  };
+
+  const handleSortByName = () => {
+    setSortOrder('nameAZ');
+  };
+
   return (
     <Container>
       <div>
         Sorting:
         <span>Favorites</span>
-        <span>From cheap to expensive</span>
-        <span>From expensive to cheap</span>
-        <span>Sort by Name (A to Z)</span>
+        <span onClick={handleSortFromCheap}>From cheap to expensive</span>
+        <span onClick={handleSortFromExpensive}>From expensive to cheap</span>
+        <span onClick={handleSortByName}>Sort by Name (A to Z)</span>
       </div>
       <div className={css.wrapper}>
         <DrugList
@@ -37,9 +64,7 @@ const Shop = () => {
           onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
         />
 
-        <MedicineCardList
-          medicines={selectedPharmacy ? filteredMedicines : visibleMedicines}
-        />
+        <MedicineCardList medicines={sortedMedicines} />
       </div>
       <ToastContainer autoClose={3000} position="bottom-right" />
     </Container>
