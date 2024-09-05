@@ -11,4 +11,12 @@
     margin-left: 5px;
     padding: 5px 5px;
     cursor: pointer;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sortingItem:hover,
+.sortingItem:focus {
+    background-color: #43b02a;
+        color: #ffffff;
 }
