@@ -11,6 +11,9 @@ const CartContext = createContext({
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
+  favorites: [],
+  addToFavorites: () => {},
+  removeFromFavorites: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -79,6 +82,24 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const [favorites, setFavorites] = useState(
+    () => JSON.parse(window.localStorage.getItem('favorites')) ?? []
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const addToFavorites = medicineId => {
+    if (!favorites.includes(medicineId)) {
+      setFavorites(prevState => [...prevState, medicineId]);
+    }
+  };
+
+  const removeFromFavorites = medicineId => {
+    setFavorites(favorites.filter(id => id !== medicineId));
+  };
+
   const [filter, setFilter] = useState('');
   const [visibleMedicines, setVisibleMedicines] = useState([]);
 
@@ -114,6 +135,9 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQuantity,
+        favorites,
+        addToFavorites,
+        removeFromFavorites,
       }}
     >
       {children}

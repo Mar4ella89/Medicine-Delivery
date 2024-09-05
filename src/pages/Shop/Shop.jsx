@@ -16,7 +16,7 @@ const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
 
-  const { visibleMedicines } = useContext(CartContext);
+  const { visibleMedicines, favorites } = useContext(CartContext);
 
   const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
@@ -27,8 +27,14 @@ const Shop = () => {
 
   const [sortOrder, setSortOrder] = useState('default');
 
+  console.log(medicinesList);
+  console.log(favorites);
+  console.log([...medicinesList].filter(({ _id }) => favorites.includes(_id)));
+
   const sortedMedicines = useMemo(() => {
     if (sortOrder === 'default') return medicinesList;
+    if (sortOrder === 'favorite')
+      return [...medicinesList].filter(({ _id }) => favorites.includes(_id));
     if (sortOrder === 'cheapToExpensive')
       return [...medicinesList].sort((a, b) => a.price - b.price);
     if (sortOrder === 'expensiveToCheap')
@@ -36,7 +42,7 @@ const Shop = () => {
     if (sortOrder === 'nameAZ')
       return [...medicinesList].sort((a, b) => a.name.localeCompare(b.name));
     return medicinesList;
-  }, [medicinesList, sortOrder]);
+  }, [medicinesList, sortOrder, favorites]);
 
   const handleSortFromCheap = () => {
     setSortOrder('cheapToExpensive');
@@ -50,9 +56,14 @@ const Shop = () => {
     setSortOrder('nameAZ');
   };
 
+  const handleSortByFavorite = () => {
+    setSortOrder('favorite');
+  };
+
   return (
     <Container>
       <SortingControls
+        onFilterByFavorite={handleSortByFavorite}
         onSortFromCheap={handleSortFromCheap}
         onSortFromExpensive={handleSortFromExpensive}
         onSortByName={handleSortByName}

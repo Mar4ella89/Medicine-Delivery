@@ -5,10 +5,19 @@ import CartContext from 'contexts/CartContext';
 import css from './MedicineCardList.module.css';
 
 const MedicineCardList = ({ medicines }) => {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, favorites, addToFavorites, removeFromFavorites } =
+    useContext(CartContext);
 
   const handleMedicineClick = (medicines, idMedicines) => {
     addToCart(medicines, idMedicines);
+  };
+
+  const handleFavoriteClick = idMedicines => {
+    if (favorites.includes(idMedicines)) {
+      removeFromFavorites(idMedicines);
+      return;
+    }
+    addToFavorites(idMedicines);
   };
 
   const elements = medicines.map(({ _id, name, imgUrl, price }) => (
@@ -17,6 +26,13 @@ const MedicineCardList = ({ medicines }) => {
       <h3 className={css.subtitle}>{name}</h3>
       <div className={css.medicineOrder}>
         <p>{price.toFixed(2)} $</p>
+        <button
+          type="button"
+          className={css.btnFavorite}
+          onClick={() => handleFavoriteClick(_id)}
+        >
+          {favorites.includes(_id) ? '❤️' : '🤍'}
+        </button>
         <button
           type="button"
           className={css.btnOrder}

@@ -1,6 +1,7 @@
 import css from './SortingControls.module.css';
 
 const SortingControls = ({
+  onFilterByFavorite,
   onSortFromCheap,
   onSortFromExpensive,
   onSortByName,
@@ -8,7 +9,9 @@ const SortingControls = ({
   return (
     <div className={css.wrapper}>
       <span className={css.title}>Sorting:</span>
-      <span className={css.sortingItem}>Favorites</span>
+      <span onClick={onFilterByFavorite} className={css.sortingItem}>
+        Favorites
+      </span>
       <span onClick={onSortFromCheap} className={css.sortingItem}>
         From cheap to expensive
       </span>
