@@ -27,14 +27,15 @@ const Shop = () => {
 
   const [sortOrder, setSortOrder] = useState('default');
 
-  console.log(medicinesList);
-  console.log(favorites);
-  console.log([...medicinesList].filter(({ _id }) => favorites.includes(_id)));
-
   const sortedMedicines = useMemo(() => {
     if (sortOrder === 'default') return medicinesList;
     if (sortOrder === 'favorite')
-      return [...medicinesList].filter(({ _id }) => favorites.includes(_id));
+      return [...medicinesList].sort((a, b) => {
+        if (favorites.includes(a._id) && !favorites.includes(b._id)) return -1;
+        if (!favorites.includes(a._id) && favorites.includes(b._id)) return 1;
+        return 0;
+      });
+
     if (sortOrder === 'cheapToExpensive')
       return [...medicinesList].sort((a, b) => a.price - b.price);
     if (sortOrder === 'expensiveToCheap')
