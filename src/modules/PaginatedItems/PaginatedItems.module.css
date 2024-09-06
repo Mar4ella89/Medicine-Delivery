@@ -9,10 +9,15 @@
 .pagination li {
     margin: 0 5px;
     cursor: pointer;
-    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination li a{
+display: flex;
+    align-items: center;
+    padding: 8px 12px;
 }
 
 .pagination li:hover,
@@ -27,8 +32,11 @@
     border-color: #8ee97a;
 }
 
-.previous,
-.next {
+.previous a,
+.next a {
+    display: flex;
+        align-items: center;
+        padding: 8px 12px;
     font-weight: bold;
 }
 
