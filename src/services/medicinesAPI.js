@@ -3,7 +3,7 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://medicine-delivery-ztb4.onrender.com/api/medicines',
   params: {
-    limit: 12,
+    limit: 100,
   },
 });
 

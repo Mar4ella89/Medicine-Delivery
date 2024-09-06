@@ -5,3 +5,9 @@
 .mapWrapper {
   margin-top: 10px;
 }
+
+.wrapperMed{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
