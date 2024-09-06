@@ -8,8 +8,8 @@
 .wrapper {
     display: flex;
     max-width: 1280px;
-        margin: 0 auto;
-    padding: 15px 20px
+    margin: 0 auto;
+    padding: 5px 20px
 }
 
 .navList {
