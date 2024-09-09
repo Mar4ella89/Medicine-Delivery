@@ -11,8 +11,8 @@ const ShoppingCart = lazy(() => import('pages/ShoppingCart/ShoppingCart'));
 export const Layout = () => {
   return (
     <>
-      <Navbar />
       <Suspense fallback={<Loader />}>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route path="/cart" element={<ShoppingCart />} />
