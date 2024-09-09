@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/medicine-delivery/static/css/main.7fea5485.css",
-    "main.js": "/medicine-delivery/static/js/main.f6cb7a29.js",
+    "main.css": "/medicine-delivery/static/css/main.f3187fb3.css",
+    "main.js": "/medicine-delivery/static/js/main.df390e99.js",
     "static/css/158.1d786b57.chunk.css": "/medicine-delivery/static/css/158.1d786b57.chunk.css",
     "static/js/158.9dde5cd2.chunk.js": "/medicine-delivery/static/js/158.9dde5cd2.chunk.js",
     "static/css/347.3a8b2799.chunk.css": "/medicine-delivery/static/css/347.3a8b2799.chunk.css",
     "static/js/347.a5dce8fa.chunk.js": "/medicine-delivery/static/js/347.a5dce8fa.chunk.js",
     "static/js/453.6e91baa8.chunk.js": "/medicine-delivery/static/js/453.6e91baa8.chunk.js",
-    "static/js/373.7af9193f.chunk.js": "/medicine-delivery/static/js/373.7af9193f.chunk.js",
+    "static/js/373.4a4c3311.chunk.js": "/medicine-delivery/static/js/373.4a4c3311.chunk.js",
     "index.html": "/medicine-delivery/index.html",
-    "main.7fea5485.css.map": "/medicine-delivery/static/css/main.7fea5485.css.map",
-    "main.f6cb7a29.js.map": "/medicine-delivery/static/js/main.f6cb7a29.js.map",
+    "main.f3187fb3.css.map": "/medicine-delivery/static/css/main.f3187fb3.css.map",
+    "main.df390e99.js.map": "/medicine-delivery/static/js/main.df390e99.js.map",
     "158.1d786b57.chunk.css.map": "/medicine-delivery/static/css/158.1d786b57.chunk.css.map",
     "158.9dde5cd2.chunk.js.map": "/medicine-delivery/static/js/158.9dde5cd2.chunk.js.map",
     "347.3a8b2799.chunk.css.map": "/medicine-delivery/static/css/347.3a8b2799.chunk.css.map",
     "347.a5dce8fa.chunk.js.map": "/medicine-delivery/static/js/347.a5dce8fa.chunk.js.map",
     "453.6e91baa8.chunk.js.map": "/medicine-delivery/static/js/453.6e91baa8.chunk.js.map",
-    "373.7af9193f.chunk.js.map": "/medicine-delivery/static/js/373.7af9193f.chunk.js.map"
+    "373.4a4c3311.chunk.js.map": "/medicine-delivery/static/js/373.4a4c3311.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fea5485.css",
-    "static/js/main.f6cb7a29.js"
+    "static/css/main.f3187fb3.css",
+    "static/js/main.df390e99.js"
   ]
 }
