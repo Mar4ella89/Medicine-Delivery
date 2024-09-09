@@ -1,4 +1,11 @@
-import { useContext, useState, useMemo, useEffect, useCallback } from 'react';
+import {
+  useContext,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -85,6 +92,14 @@ const Shop = () => {
     return sortedMedicines.slice(startIndex, endIndex);
   }, [sortedMedicines, currentPage, itemsPerPage]);
 
+  const medicinesContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (medicinesContainerRef.current) {
+      medicinesContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [currentPage]);
+
   return (
     <Container>
       <div>
@@ -99,7 +114,7 @@ const Shop = () => {
             drugsItem={drugsItem}
             onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
           />
-          <div className={css.wrapperMed}>
+          <div className={css.wrapperMed} ref={medicinesContainerRef}>
             <MedicineCardList medicines={paginatedMedicines} />
             <PaginatedItems
               itemsPerPage={itemsPerPage}
