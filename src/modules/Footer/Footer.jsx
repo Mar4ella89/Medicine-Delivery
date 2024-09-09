@@ -1,7 +1,3 @@
-// import { NavLink } from 'react-router-dom';
-
-// import MedicineSearchForm from 'modules/MedicineSearchForm/MedicineSearchForm';
-
 import css from './Footer.module.css';
 
 const Footer = () => {
