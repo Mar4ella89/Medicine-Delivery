@@ -16,12 +16,12 @@ const Footer = () => {
                 </a>
               </li>
               <li class={css.item}>
-                <a href="mailto:info@example.com" class={css.link}>
+                <a href="mailto:info@medicines.com" class={css.link}>
                   info@medicines.com
                 </a>
               </li>
               <li class={css.item}>
-                <a href="tel:+380991111111" class={css.link}>
+                <a href="tel:+380999110911" class={css.link}>
                   +38 099 911 0 911
                 </a>
               </li>
