@@ -14,16 +14,20 @@ const CartContext = createContext({
   favorites: [],
   addToFavorites: () => {},
   removeFromFavorites: () => {},
+  isLoading: false,
 });
 
 export const CartProvider = ({ children }) => {
   const [medicineItems, setMedicineItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchAllMedicines = async () => {
       try {
+        setIsLoading(true);
         const data = await allMedicines();
         setMedicineItems(data);
+        setIsLoading(false);
       } catch ({ response }) {
         console.log(response.data.message);
       }
@@ -138,6 +142,7 @@ export const CartProvider = ({ children }) => {
         favorites,
         addToFavorites,
         removeFromFavorites,
+        isLoading,
       }}
     >
       {children}

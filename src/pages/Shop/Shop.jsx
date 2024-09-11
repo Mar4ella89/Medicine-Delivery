@@ -16,6 +16,7 @@ import DrugContext from 'contexts/DrugContext';
 import CartContext from 'contexts/CartContext';
 import SortingControls from 'components/SortingControls/SortingControls';
 import PaginatedItems from 'modules/PaginatedItems/PaginatedItems';
+import Loader from 'modules/Loader/Loader';
 
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Shop.module.css';
@@ -23,12 +24,14 @@ import css from './Shop.module.css';
 const Shop = () => {
   const { selectedPharmacy, setSelectedPharmacy, drugsItem } =
     useContext(DrugContext);
-  const { visibleMedicines, favorites } = useContext(CartContext);
+  const { visibleMedicines, favorites, isLoading } = useContext(CartContext);
 
   const filteredMedicines = visibleMedicines.filter(medicine => {
     const pharmacyIdArr = medicine.availablePharmacies;
     return pharmacyIdArr.includes(selectedPharmacy);
   });
+
+  console.log(isLoading);
 
   const medicinesList = selectedPharmacy ? filteredMedicines : visibleMedicines;
 
@@ -115,7 +118,11 @@ const Shop = () => {
             onSelectPharmacy={pharmacyId => setSelectedPharmacy(pharmacyId)}
           />
           <div className={css.wrapperMed} ref={medicinesContainerRef}>
-            <MedicineCardList medicines={paginatedMedicines} />
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <MedicineCardList medicines={paginatedMedicines} />
+            )}
             <PaginatedItems
               itemsPerPage={itemsPerPage}
               pageCount={Math.ceil(sortedMedicines.length / itemsPerPage)}
