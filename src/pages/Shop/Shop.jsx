@@ -31,8 +31,6 @@ const Shop = () => {
     return pharmacyIdArr.includes(selectedPharmacy);
   });
 
-  console.log(isLoading);
-
   const medicinesList = selectedPharmacy ? filteredMedicines : visibleMedicines;
 
   const [sortOrder, setSortOrder] = useState('default');
