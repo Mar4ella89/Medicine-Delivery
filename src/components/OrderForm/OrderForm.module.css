@@ -7,7 +7,7 @@
 .field {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border: 1px solid #43b02a;
     border-radius: 4px;
 }
@@ -43,4 +43,10 @@
 .radioName {
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
 }
