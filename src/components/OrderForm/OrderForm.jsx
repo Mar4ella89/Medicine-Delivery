@@ -11,15 +11,26 @@ const deliveryMethod1 = [
 ];
 
 const userSchema = yup.object().shape({
-  name: yup.string().required(),
-  lastName: yup.string().required(),
-  email: yup.string().email().required(),
-  // phone: yup.string().min(6).max(32).required(),
+  name: yup.string().required('Name is required'),
+  lastName: yup.string().required('Last Name is required'),
+  email: yup
+    .string()
+    .email('Invalid email format')
+    .required('Email is required'),
+  phone: yup
+    .string()
+    .min(10, 'Phone number must be at least 10 characters')
+    .max(15, 'Phone number must not exceed 15 characters')
+    .matches(
+      /^\+?\d+$/,
+      'Phone number must contain only digits and may start with "+"'
+    )
+    .required('Phone number is required'),
   deliveryMethod: yup
     .string()
-    .oneOf(deliveryMethod1)
-    .required('Please enter your delivery method'),
-  // address: yup.string().oneOf(age).required('Please enter your age'),
+    .oneOf(deliveryMethod1, 'Please select a valid delivery method')
+    .required('Delivery method is required. Please enter your delivery method'),
+  address: yup.string().required('Address is required'),
 });
 
 const initialValues = {
@@ -51,9 +62,8 @@ const OrderForm = () => {
               maxLength="20"
               type="text"
               placeholder="Name"
-              required
             />
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage name="name" component="div" className={css.error} />
           </label>
           <label className={css.label}>
             <span className={css.fieldName}>Last Name</span>
@@ -63,9 +73,12 @@ const OrderForm = () => {
               maxLength="30"
               type="text"
               placeholder="Last Name"
-              required
             />
-            <ErrorMessage name="lastName" component="div" />
+            <ErrorMessage
+              name="lastName"
+              component="div"
+              className={css.error}
+            />
           </label>
           <label className={css.label}>
             <span className={css.fieldName}>Email</span>
@@ -73,53 +86,39 @@ const OrderForm = () => {
               className={css.field}
               name="email"
               maxLength="50"
-              type="text"
+              type="email"
               placeholder="Email"
-              required
             />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage name="email" component="div" className={css.error} />
           </label>
           <label className={css.label}>
             <span className={css.fieldName}>Phone</span>
             <Field
               className={css.field}
               name="phone"
+              maxLength="15"
               type="text"
               placeholder="Phone"
-              required
             />
-            <ErrorMessage name="phone" component="div" />
+            <ErrorMessage name="phone" component="div" className={css.error} />
           </label>
           <div>
             <h3>Choose delivery method</h3>
+
             <div className={css.radio}>
-              <label className={css.radioLabel}>
-                <span className={css.radioName}>Pick up from store</span>
-                <Field
-                  className={css.field}
-                  type="radio"
-                  name="deliveryMethod"
-                  value="Pick up from store"
-                />
-              </label>
-              <label className={css.radioLabel}>
-                <span className={css.radioName}>Delivery to address</span>
-                <Field
-                  className={css.field}
-                  type="radio"
-                  name="deliveryMethod"
-                  value="Delivery to address"
-                />
-              </label>
-              <label className={css.radioLabel}>
-                <span className={css.radioName}>New Post</span>
-                <Field
-                  className={css.field}
-                  type="radio"
-                  name="deliveryMethod"
-                  value="New Post"
-                />
-              </label>
+              {deliveryMethod1.map(method => {
+                return (
+                  <label key={method} className={css.radioLabel}>
+                    <span className={css.radioName}>{method}</span>
+                    <Field
+                      className={css.field}
+                      type="radio"
+                      name="deliveryMethod"
+                      value={method}
+                    />
+                  </label>
+                );
+              })}
             </div>
           </div>
           <label className={css.label}>
@@ -130,7 +129,11 @@ const OrderForm = () => {
               type="text"
               placeholder="Address"
             />
-            <ErrorMessage name="address" component="div" />
+            <ErrorMessage
+              name="address"
+              component="div"
+              className={css.error}
+            />
           </label>
 
           <button className={css.button} type="submit">
