@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/medicine-delivery/static/css/main.f3187fb3.css",
-    "main.js": "/medicine-delivery/static/js/main.7caa824b.js",
+    "main.js": "/medicine-delivery/static/js/main.067635d3.js",
     "static/css/822.532fd01a.chunk.css": "/medicine-delivery/static/css/822.532fd01a.chunk.css",
-    "static/js/822.756c9e5d.chunk.js": "/medicine-delivery/static/js/822.756c9e5d.chunk.js",
+    "static/js/822.1ceb3d4f.chunk.js": "/medicine-delivery/static/js/822.1ceb3d4f.chunk.js",
     "static/css/458.9b11ab3f.chunk.css": "/medicine-delivery/static/css/458.9b11ab3f.chunk.css",
     "static/js/458.93724b50.chunk.js": "/medicine-delivery/static/js/458.93724b50.chunk.js",
     "static/js/453.6e91baa8.chunk.js": "/medicine-delivery/static/js/453.6e91baa8.chunk.js",
     "static/js/482.214db65c.chunk.js": "/medicine-delivery/static/js/482.214db65c.chunk.js",
     "index.html": "/medicine-delivery/index.html",
     "main.f3187fb3.css.map": "/medicine-delivery/static/css/main.f3187fb3.css.map",
-    "main.7caa824b.js.map": "/medicine-delivery/static/js/main.7caa824b.js.map",
+    "main.067635d3.js.map": "/medicine-delivery/static/js/main.067635d3.js.map",
     "822.532fd01a.chunk.css.map": "/medicine-delivery/static/css/822.532fd01a.chunk.css.map",
-    "822.756c9e5d.chunk.js.map": "/medicine-delivery/static/js/822.756c9e5d.chunk.js.map",
+    "822.1ceb3d4f.chunk.js.map": "/medicine-delivery/static/js/822.1ceb3d4f.chunk.js.map",
     "458.9b11ab3f.chunk.css.map": "/medicine-delivery/static/css/458.9b11ab3f.chunk.css.map",
     "458.93724b50.chunk.js.map": "/medicine-delivery/static/js/458.93724b50.chunk.js.map",
     "453.6e91baa8.chunk.js.map": "/medicine-delivery/static/js/453.6e91baa8.chunk.js.map",
@@ -20,6 +20,6 @@
   },
   "entrypoints": [
     "static/css/main.f3187fb3.css",
-    "static/js/main.7caa824b.js"
+    "static/js/main.067635d3.js"
   ]
 }
