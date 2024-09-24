@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 import CartContext from 'contexts/CartContext';
 
@@ -10,6 +11,7 @@ const MedicineCardList = ({ medicines }) => {
 
   const handleMedicineClick = (medicines, idMedicines) => {
     addToCart(medicines, idMedicines);
+    toast.success('The medicine has been added to the order cart');
   };
 
   const handleFavoriteClick = idMedicines => {
